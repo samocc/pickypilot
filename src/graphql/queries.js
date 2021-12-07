@@ -38,10 +38,6 @@ export const getRegistry = /* GraphQL */ `
       id
       email
       ciudad
-      experiencia
-      especialidad
-      descripcion
-      link
       createdAt
       updatedAt
     }
@@ -58,10 +54,6 @@ export const listRegistries = /* GraphQL */ `
         id
         email
         ciudad
-        experiencia
-        especialidad
-        descripcion
-        link
         createdAt
         updatedAt
       }

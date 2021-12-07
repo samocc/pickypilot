@@ -43,10 +43,6 @@ export const onCreateRegistry = /* GraphQL */ `
       id
       email
       ciudad
-      experiencia
-      especialidad
-      descripcion
-      link
       createdAt
       updatedAt
     }
@@ -58,10 +54,6 @@ export const onUpdateRegistry = /* GraphQL */ `
       id
       email
       ciudad
-      experiencia
-      especialidad
-      descripcion
-      link
       createdAt
       updatedAt
     }
@@ -73,10 +65,6 @@ export const onDeleteRegistry = /* GraphQL */ `
       id
       email
       ciudad
-      experiencia
-      especialidad
-      descripcion
-      link
       createdAt
       updatedAt
     }
