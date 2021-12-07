@@ -4,7 +4,7 @@ import '@aws-amplify/ui-react/styles.css';
 import {API} from "aws-amplify";
 import {createRegistry as createRegistryMutation, deleteRegistry as deleteRegistryMutation} from "../graphql/mutations";
 import {listRegistries} from "../graphql/queries";
-import { RegionDropdown, CountryRegionData } from 'react-country-region-selector';
+import { RegionDropdown } from 'react-country-region-selector';
 
 const initialFormState = {
     email: '',
