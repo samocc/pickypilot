@@ -1,0 +1,16 @@
+.registry-list {
+    margin-top: 80px;
+}
+
+.email-list-item {
+    margin: 12px;
+}
+
+.email-list-item .email {
+    font-weight: bold;
+    margin-right: 12px;
+}
+
+.email-list-item button {
+    margin-left: 12px;
+}

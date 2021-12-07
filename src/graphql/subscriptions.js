@@ -37,3 +37,48 @@ export const onDeleteNote = /* GraphQL */ `
     }
   }
 `;
+export const onCreateRegistry = /* GraphQL */ `
+  subscription OnCreateRegistry {
+    onCreateRegistry {
+      id
+      email
+      ciudad
+      experiencia
+      especialidad
+      descripcion
+      link
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateRegistry = /* GraphQL */ `
+  subscription OnUpdateRegistry {
+    onUpdateRegistry {
+      id
+      email
+      ciudad
+      experiencia
+      especialidad
+      descripcion
+      link
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteRegistry = /* GraphQL */ `
+  subscription OnDeleteRegistry {
+    onDeleteRegistry {
+      id
+      email
+      ciudad
+      experiencia
+      especialidad
+      descripcion
+      link
+      createdAt
+      updatedAt
+    }
+  }
+`;

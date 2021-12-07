@@ -32,3 +32,40 @@ export const listNotes = /* GraphQL */ `
     }
   }
 `;
+export const getRegistry = /* GraphQL */ `
+  query GetRegistry($id: ID!) {
+    getRegistry(id: $id) {
+      id
+      email
+      ciudad
+      experiencia
+      especialidad
+      descripcion
+      link
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listRegistries = /* GraphQL */ `
+  query ListRegistries(
+    $filter: ModelRegistryFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listRegistries(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        email
+        ciudad
+        experiencia
+        especialidad
+        descripcion
+        link
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;

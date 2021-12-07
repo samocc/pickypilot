@@ -46,3 +46,57 @@ export const deleteNote = /* GraphQL */ `
     }
   }
 `;
+export const createRegistry = /* GraphQL */ `
+  mutation CreateRegistry(
+    $input: CreateRegistryInput!
+    $condition: ModelRegistryConditionInput
+  ) {
+    createRegistry(input: $input, condition: $condition) {
+      id
+      email
+      ciudad
+      experiencia
+      especialidad
+      descripcion
+      link
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateRegistry = /* GraphQL */ `
+  mutation UpdateRegistry(
+    $input: UpdateRegistryInput!
+    $condition: ModelRegistryConditionInput
+  ) {
+    updateRegistry(input: $input, condition: $condition) {
+      id
+      email
+      ciudad
+      experiencia
+      especialidad
+      descripcion
+      link
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteRegistry = /* GraphQL */ `
+  mutation DeleteRegistry(
+    $input: DeleteRegistryInput!
+    $condition: ModelRegistryConditionInput
+  ) {
+    deleteRegistry(input: $input, condition: $condition) {
+      id
+      email
+      ciudad
+      experiencia
+      especialidad
+      descripcion
+      link
+      createdAt
+      updatedAt
+    }
+  }
+`;
