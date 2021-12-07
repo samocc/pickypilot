@@ -13,8 +13,4 @@ type Registry @model {
   id: ID!
   email: String!
   ciudad: String
-  experiencia: Int
-  especialidad: String
-  descripcion: String
-  link: String
 }
