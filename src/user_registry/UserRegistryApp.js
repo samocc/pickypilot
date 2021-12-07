@@ -4,6 +4,7 @@ import '@aws-amplify/ui-react/styles.css';
 import {API} from "aws-amplify";
 import {createRegistry as createRegistryMutation, deleteRegistry as deleteRegistryMutation} from "../graphql/mutations";
 import {listRegistries} from "../graphql/queries";
+import { RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 
 const initialFormState = {
     email: '',
@@ -41,21 +42,30 @@ function UserRegistryApp() {
         <div className="App">
             <h1>Registrar Email</h1>
             <input
+                type="email"
                 onChange={e => setFormData({ ...formData, 'email': e.target.value})}
                 placeholder="Email"
                 value={formData.email}
-            /><input
-            onChange={e => setFormData({ ...formData, 'ciudad': e.target.value})}
-            placeholder="Ciudad"
-            value={formData.ciudad}
+                required
             />
-            <button onClick={registerUser}>Registrar!</button>
+            <span>
+                <RegionDropdown
+                    country="Mexico"
+                    value={formData.ciudad}
+                    onChange={(val) => setFormData({ ...formData, 'ciudad': val})}
+                    defaultOptionLabel="- Selecciona estado -"
+                />
+            </span>
+            <div className="register-button">
+                <button onClick={registerUser}>Registrar!</button>
+            </div>
+
             <div className={"registry-list"}>
                 {
                     registry.map(reg => (
                         <div className={"email-list-item"} key={reg.id || reg.email}>
                             <span className={"email"}>{reg.email}</span>
-                            <span className={"ciudad"}>Ciudad {reg.ciudad}</span>
+                            <span className={"ciudad"}>Estado: {reg.ciudad}</span>
                             <button onClick={() => deleteRegistry(reg)}>Delete email</button>
                         </div>
                     ))

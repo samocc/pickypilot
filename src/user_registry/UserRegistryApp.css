@@ -1,5 +1,10 @@
+.register-button {
+    margin-top: 30px
+}
+
 .registry-list {
     margin-top: 80px;
+    background-color: azure;
 }
 
 .email-list-item {
