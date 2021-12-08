@@ -5,7 +5,9 @@ import UserRegistryApp from "./user_registry/UserRegistryApp";
 
 function App() {
     return (
-        <UserRegistryApp />
+        <div className="App">
+            <UserRegistryApp />
+        </div>
     );
 }
 

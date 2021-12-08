@@ -1,3 +1,9 @@
+.User-registry {
+    display: block;
+    width: 800px;
+    margin: auto;
+}
+
 .register-button {
     margin-top: 30px
 }
@@ -18,4 +24,14 @@
 
 .email-list-item button {
     margin-left: 12px;
+}
+
+.form-wrapper {
+    display: inline-block;
+    width: 240px;
+}
+
+.region-selector-wrapper {
+    display: inline-block;
+    width: 240px;
 }
