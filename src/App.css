@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /*text-align: center;*/
 }
 .columns-container {
   margin-top: -10px;
@@ -20,6 +20,12 @@
 }
 .columns .column-narrow {
   padding: 0 12px;
+}
+.label-column {
+  line-height: 48px;
+  color: rgba(0, 0, 0, 0.54);
+  font-weight: 700;
+  font-size: 1rem;
 }
 .single-column {
   padding: 10px 0;

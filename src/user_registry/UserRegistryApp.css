@@ -5,11 +5,12 @@
 }
 
 .register-button {
-    margin-top: 30px
+    margin-top: 30px;
+    text-align: center;
 }
 
 .registry-list {
-    margin-top: 80px;
+    margin-top: 40px;
     background-color: azure;
 }
 
@@ -22,6 +23,20 @@
     margin-right: 12px;
 }
 
+.email-list-item .ciudad {
+    margin-right: 12px;
+}
+
+.email-list-item .data {
+
+}
+
 .email-list-item button {
     margin-left: 12px;
+}
+
+.exp-label {
+    color: rgba(0, 0, 0, 0.54);
+    font-weight: 600;
+    font-size: 0.73rem;
 }
