@@ -13,4 +13,8 @@ type Registry @model {
   id: ID!
   email: String!
   ciudad: String
+  exp: Int
+  esp: String
+  desc: String
+  portfolio: String
 }

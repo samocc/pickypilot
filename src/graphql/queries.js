@@ -38,6 +38,10 @@ export const getRegistry = /* GraphQL */ `
       id
       email
       ciudad
+      exp
+      esp
+      desc
+      portfolio
       createdAt
       updatedAt
     }
@@ -54,6 +58,10 @@ export const listRegistries = /* GraphQL */ `
         id
         email
         ciudad
+        exp
+        esp
+        desc
+        portfolio
         createdAt
         updatedAt
       }
