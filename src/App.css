@@ -1,3 +1,36 @@
 .App {
   text-align: center;
 }
+.columns-container {
+  margin-top: -10px;
+}
+.columns {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0;
+  margin: 0 -12px;
+}
+.columns .column {
+  flex: 1;
+  padding: 0 12px;
+}
+.columns .column-grow {
+  flex-grow: 1;
+  padding: 0 12px;
+}
+.columns .column-narrow {
+  padding: 0 12px;
+}
+.single-column {
+  padding: 10px 0;
+}
+.is-half {
+  width: 50%;
+}
+.flex-height {
+  display: flex;
+  flex-direction: column;
+}
+.flex-grow {
+  flex-grow: 1;
+}
