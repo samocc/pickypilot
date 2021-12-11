@@ -1,5 +1,8 @@
-.App {
+@import 'src/styles/Picky';
 
+.App {
+  background-color: $background-white;
+  height: 100vh;
 }
 .columns-container {
   margin-top: -10px;
