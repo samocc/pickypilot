@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import './UserRegistryApp.css';
+import './UserRegistryForm.css';
 import '@aws-amplify/ui-react/styles.css';
 import {API} from "aws-amplify";
 import {createRegistry as createRegistryMutation, deleteRegistry as deleteRegistryMutation} from "../graphql/mutations";
@@ -25,7 +25,7 @@ const defaultProps = {
     getOptionLabel: (option) => option.name,
 };
 
-function UserRegistryApp() {
+function UserRegistryForm() {
     const [registry, setRegistry] = useState([]);
     const [formData, setFormData] = useState(initialFormState);
     const [advanced, setAdvanced] = useState(false);
@@ -178,4 +178,4 @@ function UserRegistryApp() {
     );
 }
 
-export default UserRegistryApp;
+export default UserRegistryForm;
