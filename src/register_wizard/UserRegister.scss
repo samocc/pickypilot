@@ -1,12 +1,27 @@
 .user-register {
-  .page-header {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .user-register-header {
     text-align: center;
     font-size: 2em;
     padding: 20px 0 40px;
     font-weight: 700;
   }
-  .register-choro {
-    margin-bottom: 40px;
+  .user-register-body {
+    flex-grow: 1;
+    .register-choro {
+      margin-bottom: 40px;
+    }
+  }
+  .user-register-footer{
+    padding: 20px 40px;
+    .register-button {
+      text-align: center;
+    }
+    .footer-right {
+      float: right;
+    }
   }
 
   .return {
@@ -15,15 +30,13 @@
     left:5px;
   }
 
-  .register-button {
-    margin-top: 30px;
-    text-align: center;
-  }
-
   .exp-label {
     color: rgba(0, 0, 0, 0.54);
     font-weight: 600;
     font-size: 0.73rem;
+  }
+  .alert-wrapper {
+    margin-top: 15px;
   }
 
 }
