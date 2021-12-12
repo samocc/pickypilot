@@ -86,11 +86,11 @@ function PickyRegister() {
                 <div className="picky-register-body">
                     {advanced === true ? <ChefRegister /> : <UserRegister/>}
                 </div>
-                {/*<div className="picky-register-footer">*/}
-                {/*    <div className="footer-right">*/}
-                {/*        <Button variant="contained" onClick={registerUser}>Registrar!</Button>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
+                <div className="picky-register-footer">
+                    <div className="footer-right">
+                        <Button variant="contained" onClick={registerUser}>Registrar!</Button>
+                    </div>
+                </div>
             </div>
             <div className="registry-list">
                 {

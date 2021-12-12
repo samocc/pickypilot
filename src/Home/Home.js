@@ -20,6 +20,13 @@ function Home() {
     return(
         <div className="picky-home">
             <div className="tile">
+                <div>
+                    <span className="font-test ft-Heebo">Picky</span>
+                    <span className="font-test ft-Inter">Picky</span>
+                    <span className="font-test ft-Poppins">Picky</span>
+                    <span className="font-test ft-PublicSans">Picky</span>
+                    <span className="font-test ft-Roboto">Picky</span>
+                </div>
                 <PickyButtonBlack variant="contained" onClick={toRegister2}> Registrate (modal) </PickyButtonBlack>
                 <PickyButtonOrange variant="contained" onClick={toRegister}> Registrate (page) </PickyButtonOrange>
             </div>
