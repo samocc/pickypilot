@@ -1,6 +1,9 @@
 import './Home.scss';
 import {useNavigate} from "react-router-dom";
-import {PickyButtonBlack, PickyButtonOrange} from "../components/PickyButton/PickyButton";
+import {
+    PickyButtonBlackXL,
+    PickyButtonOrangeXL
+} from "../components/PickyButton/PickyButton";
 import RegisterModal from "../register_wizard/RegisterModal";
 import {useState} from "react";
 
@@ -19,17 +22,21 @@ function Home() {
     }
     return(
         <div className="picky-home">
+            <div>
+                <span className="font-test ft-Heebo">Picky</span>
+                <span className="font-test ft-Inter">Picky</span>
+                <span className="font-test ft-Poppins">Picky</span>
+                <span className="font-test ft-PublicSans">Picky</span>
+                <span className="font-test ft-Roboto">Picky</span>
+            </div>
+            <PickyButtonBlackXL variant="contained" onClick={toRegister2} size="large"> Registrate (modal) </PickyButtonBlackXL>
+            <PickyButtonOrangeXL variant="contained" onClick={toRegister} size="large"> Registrate (page) </PickyButtonOrangeXL>
+
             <div className="tile tile-white">
-                <div className="tile-content">
-                    <div>
-                        <span className="font-test ft-Heebo">Picky</span>
-                        <span className="font-test ft-Inter">Picky</span>
-                        <span className="font-test ft-Poppins">Picky</span>
-                        <span className="font-test ft-PublicSans">Picky</span>
-                        <span className="font-test ft-Roboto">Picky</span>
+                <div className="tile-content page1">
+                    <div className="register-button-positioner">
+                        <PickyButtonOrangeXL variant="contained" onClick={toRegister} size="large">Registrate</PickyButtonOrangeXL>
                     </div>
-                    <PickyButtonBlack variant="contained" onClick={toRegister2}> Registrate (modal) </PickyButtonBlack>
-                    <PickyButtonOrange variant="contained" onClick={toRegister}> Registrate (page) </PickyButtonOrange>
                 </div>
             </div>
             <div className="tile tile-orange">
