@@ -19,10 +19,19 @@ const defaultProps = {
     getOptionLabel: (option) => option.name,
 };
 
+const initialErrorState = {
+    email: '',
+    ciudad: '',
+    esp: '',
+    desc: '',
+    portfolio: ''
+}
+
 function UserRegister() {
     const [registry, setRegistry] = useState([]);
     const [formData, setFormData] = useState(initialFormState);
     const [successMessage, setSuccessMessage] = useState('');
+    const [errorState, setErrorState] = useState(initialErrorState);
 
     useEffect(() => {
         fetchRegistry();
@@ -34,7 +43,7 @@ function UserRegister() {
     }
 
     async function registerUser() {
-        if (!formData.email || !formData.ciudad) return;
+        if (!validateForm(formData)) return;
         await API.graphql({ query: createRegistryMutation, variables: { input: formData } });
 
         setRegistry([ ...registry, formData ]);
@@ -42,8 +51,33 @@ function UserRegister() {
         setFormData({...initialFormState, 'ciudad': formData.ciudad});
     }
 
+    function validateForm(data) {
+        const eState = {...initialErrorState};
+        let valid = true;
+        if(!data.email) {
+            eState.email = 'Ingresa un correo electrónico';
+            valid = false;
+        }
+        if(!data.ciudad) {
+            eState.ciudad = 'Selecciona ciudad'
+            valid = false;
+        }
+        setErrorState({...initialErrorState, ...eState});
+        return valid
+    }
+
+    function clearErrorField(fieldName) {
+        setErrorState(prevState => {return {...prevState, [fieldName]: false}});
+    }
+
+    async function onEmailChange (e) {
+        setFormData({ ...formData, 'email': e.target.value});
+        clearErrorField('email');
+    }
+
     async function onRegionChange (e, nv) {
         setFormData({ ...formData, 'ciudad': nv.name})
+        clearErrorField('ciudad');
     }
 
     return (
@@ -82,9 +116,12 @@ function UserRegister() {
                                     <TextField
                                         fullWidth
                                         variant="standard"
-                                        onChange={e => setFormData({ ...formData, 'email': e.target.value})}
+                                        onChange={onEmailChange}
                                         label="Email"
                                         value={formData.email}
+                                        required={true}
+                                        error={errorState.email}
+                                        helperText={errorState.email}
                                     />
                                 </div>
                                 <div className="column is-half">
@@ -93,7 +130,14 @@ function UserRegister() {
                                         disableClearable
                                         onChange={onRegionChange}
                                         renderInput={(params) => (
-                                            <TextField {...params} label="Estado de residencia" variant="standard" />
+                                            <TextField
+                                                {...params}
+                                                label="Estado de residencia"
+                                                variant="standard"
+                                                required={true}
+                                                error={errorState.ciudad}
+                                                helperText={errorState.ciudad}
+                                            />
                                         )}
                                     />
                                 </div>
