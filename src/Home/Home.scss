@@ -5,9 +5,15 @@
 }
 .tile {
   display:block;
-  height: 800px;
-  border: 2px solid white;
-
+  height: 768px;
+  width: 100%;
+  .tile-content {
+    display: block;
+    height: 100%;
+    width: 1366px;
+    margin: auto;
+    //border: 1px solid grey;
+  }
   //font-family: 'Heebo', sans-serif;
   //font-weight: 600;
 
@@ -22,7 +28,12 @@
 
   //font-family: 'Roboto', sans-serif;
   //font-weight: 500;
-
+}
+.tile-white {
+  background-color: $background-white;
+}
+.tile-orange {
+  background-color: $picky-orange;
 }
 
 .font-test {
