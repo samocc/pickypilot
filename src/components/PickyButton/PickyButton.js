@@ -2,7 +2,7 @@ import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 
 export const PickyButtonBlack = styled(Button)(({ theme }) => ({
-    'border-radius': '18px',
+    borderRadius: '18px',
     color: theme.palette.getContrastText('#000000'),
     backgroundColor: '#000000',
     '&:hover': {
@@ -10,7 +10,7 @@ export const PickyButtonBlack = styled(Button)(({ theme }) => ({
     },
 }));
 export const PickyButtonOrange = styled(Button)(({ theme }) => ({
-    'border-radius': '18px',
+    borderRadius: '18px',
     color: theme.palette.getContrastText('#E84839'),
     backgroundColor: '#E84839',
     '&:hover': {

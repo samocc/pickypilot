@@ -2,8 +2,9 @@ import React from 'react';
 import './App.scss';
 import '@aws-amplify/ui-react/styles.css';
 import { Routes, Route } from "react-router-dom";
-import UserRegistryForm from "./user_registry/UserRegistryForm";
 import Home from "./Home/Home";
+// import PickyRegister from "./register_wizard/PickyRegister";
+import RegisterPage from "./register_wizard/RegisterPage";
 
 function App() {
     return (
@@ -14,7 +15,7 @@ function App() {
             {/*</nav>*/}
             <Routes>
                 <Route path="/" element={<Home/>} />
-                <Route path="/register" element={<UserRegistryForm/>} />
+                <Route path="/register" element={<RegisterPage/>} />
             </Routes>
         </div>
     );

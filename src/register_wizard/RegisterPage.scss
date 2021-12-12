@@ -1,0 +1,16 @@
+.register-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    .register-page-content {
+        background-color: white;
+        padding: 0;
+        border-radius: 4px;
+    }
+    .page-return-wrapper{
+        position:absolute;
+        top: 5px;
+        left:5px;
+    }
+}

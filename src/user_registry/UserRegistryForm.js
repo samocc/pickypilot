@@ -73,7 +73,7 @@ function UserRegistryForm() {
     }
 
     return (
-        <div className="User-registry">
+        <div className="user-registry">
             <div className="form-content">
                 <div className="return">
                     <Button startIcon={<KeyboardArrowLeftIcon />} onClick={toHome}>
@@ -169,8 +169,6 @@ function UserRegistryForm() {
                 <div className="register-button">
                     <Button variant="contained" onClick={registerUser}>Registrar!</Button>
                 </div>
-
-
             </div>
             <div className="registry-list">
                 {
