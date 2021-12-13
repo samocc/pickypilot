@@ -1,9 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './UserRegister.scss'
 import '@aws-amplify/ui-react/styles.css';
 import {API} from "aws-amplify";
 import {createRegistry as createRegistryMutation} from "../graphql/mutations";
-import {listRegistries} from "../graphql/queries";
 import Button from '@mui/material/Button';
 import {Autocomplete, TextField} from "@mui/material";
 import {estados} from "../regionselector/estados";
@@ -13,7 +12,7 @@ import SuccessPanel from "./sucess-panel/SuccessPanel";
 
 const initialFormState = {
     email: '',
-    ciudad: '',
+    region: '',
     esp: '',
     desc: '',
     portfolio: ''
@@ -21,7 +20,7 @@ const initialFormState = {
 
 const initialErrorState = {
     email: '',
-    ciudad: '',
+    region: '',
     esp: '',
     desc: '',
     portfolio: ''
@@ -32,28 +31,19 @@ const defaultProps = {
     getOptionLabel: (option) => option.name,
 };
 
-function ChefRegister() {
-    const [registry, setRegistry] = useState([]);
+function ChefRegister(props) {
+    const {onRegister} = props;
     const [formData, setFormData] = useState(initialFormState);
     const [successMessage, setSuccessMessage] = useState('');
     const [errorState, setErrorState] = useState(initialErrorState);
-
-    useEffect(() => {
-        fetchRegistry();
-    }, []);
-
-    async function fetchRegistry() {
-        const apiData = await API.graphql({ query: listRegistries });
-        setRegistry(apiData.data.listRegistries.items);
-    }
 
     async function registerUser() {
         if (!validateForm(formData)) return;
         await API.graphql({ query: createRegistryMutation, variables: { input: formData } });
 
-        setRegistry([ ...registry, formData ]);
+        onRegister(formData);
         setSuccessMessage('Registro exitoso: ' + formData.email);
-        setFormData({...initialFormState, 'ciudad': formData.ciudad});
+        setFormData({...initialFormState, 'region': formData.region});
     }
 
     function validateForm(data) {
@@ -63,8 +53,8 @@ function ChefRegister() {
             eState.email = 'Ingresa un correo electrónico';
             valid = false;
         }
-        if(!data.ciudad) {
-            eState.ciudad = 'Selecciona ciudad'
+        if(!data.region) {
+            eState.region = 'Selecciona región'
             valid = false;
         }
         setErrorState({...initialErrorState, ...eState});
@@ -81,8 +71,8 @@ function ChefRegister() {
     }
 
     async function onRegionChange (e, nv) {
-        setFormData({ ...formData, 'ciudad': nv.name})
-        clearErrorField('ciudad');
+        setFormData({ ...formData, 'region': nv.name})
+        clearErrorField('region');
     }
 
     async function onExpChange (e, nv) {
@@ -123,8 +113,8 @@ function ChefRegister() {
                                                 label="Estado de residencia"
                                                 variant="standard"
                                                 required={true}
-                                                error={errorState.ciudad.length > 0}
-                                                helperText={errorState.ciudad}
+                                                error={errorState.region.length > 0}
+                                                helperText={errorState.region}
                                             />
                                         )}
                                     />

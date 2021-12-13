@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import React, {useEffect, useState} from "react";
 import {API} from "aws-amplify";
-import {createRegistry as createRegistryMutation, deleteRegistry as deleteRegistryMutation} from "../graphql/mutations";
+import {deleteRegistry as deleteRegistryMutation} from "../graphql/mutations";
 import {IconButton} from "@mui/material";
 import {PickyButtonBlack, PickyButtonOrange} from "../components/PickyButton/PickyButton";
 import ChefRegister from "./ChefRegister";
@@ -12,17 +12,8 @@ import CheckIcon from "@mui/icons-material/Check";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {listRegistries} from "../graphql/queries";
 
-const initialFormState = {
-    email: '',
-    ciudad: '',
-    esp: '',
-    desc: '',
-    portfolio: ''
-}
-
 function PickyRegister() {
     const [registry, setRegistry] = useState([]);
-    const [formData, setFormData] = useState(initialFormState);
     const [advanced, setAdvanced] = useState(false);
     const [displayOverlay, setDisplayOverlay] = useState(true);
 
@@ -34,22 +25,17 @@ function PickyRegister() {
         const apiData = await API.graphql({ query: listRegistries });
         setRegistry(apiData.data.listRegistries.items);
     }
-
-    async function registerUser() {
-        if (!formData.email || !formData.ciudad) return;
-        await API.graphql({ query: createRegistryMutation, variables: { input: formData } });
-
-        setRegistry([ ...registry, formData ]);
-        setFormData({...initialFormState, 'ciudad': formData.ciudad});
+    function onRegister(added) {
+        setRegistry([ ...registry, added ]);
     }
-    async function showOverlay (e, nv) {
+    async function showOverlay () {
         setDisplayOverlay(true);
     }
-    async function selectUser(e, nv) {
+    async function selectUser() {
         setAdvanced(false);
         setDisplayOverlay(false);
     }
-    async function selectChef(e, nv) {
+    async function selectChef() {
         setAdvanced(true);
         setDisplayOverlay(false);
     }
@@ -84,12 +70,7 @@ function PickyRegister() {
                     </div>
                 ):null}
                 <div className="picky-register-body">
-                    {advanced === true ? <ChefRegister /> : <UserRegister/>}
-                </div>
-                <div className="picky-register-footer">
-                    <div className="footer-right">
-                        <Button variant="contained" onClick={registerUser}>Registrar!</Button>
-                    </div>
+                    {advanced === true ? <ChefRegister onRegister={onRegister} /> : <UserRegister onRegister={onRegister}/>}
                 </div>
             </div>
             <div className="registry-list">
@@ -97,7 +78,7 @@ function PickyRegister() {
                     registry.map(reg => (
                         <div className="email-list-item" key={reg.id || reg.email}>
                             <span className="email">{reg.email}</span>
-                            <span className="ciudad">{reg.ciudad}</span>
+                            <span className="ciudad">{reg.region}</span>
                             {reg.esp ? <span className="data"> | Esp: {reg.esp}</span> : null}
                             {reg.desc ? <span className="data"> | Desc: <CheckIcon fontSize="inherit" /></span> : null}
                             {reg.portfolio ? <span className="data"> | Portfolio: <CheckIcon fontSize="inherit" /></span> : null}
