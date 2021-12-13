@@ -6,7 +6,7 @@ import {
 } from "../components/PickyButton/PickyButton";
 import RegisterModal from "../register_wizard/RegisterModal";
 import {useState} from "react";
-import page1 from './Home01.PNG'
+import page1 from '../logo.svg'
 import page2 from './Home02.PNG'
 import page3 from './Home03.PNG'
 import page4 from './Home04.PNG'
