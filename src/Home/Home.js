@@ -25,6 +25,7 @@ function Home() {
             <RegisterModal open={registerModalOpen} onClose={closeRegisterModal}/>
             <div className="font-test-wrapper">
                 <PickyButtonBlackXL variant="contained" onClick={toRegister2} size="large"> Registrate </PickyButtonBlackXL>
+                <div className="font-test demasiado">Demasiado</div>
                 <div className="font-test ft-Heebo">Picky</div>
                 <div className="font-test ft-Inter">Picky</div>
                 <div className="font-test ft-Poppins">Picky</div>
