@@ -7,7 +7,7 @@ import {
 import RegisterModal from "../register_wizard/RegisterModal";
 import {useState} from "react";
 import page1 from '../logo.svg'
-import page2 from './Home02.PNG'
+import page2 from '../Home02.png'
 import page3 from './Home03.PNG'
 import page4 from './Home04.PNG'
 import page5 from './Home05.PNG'
