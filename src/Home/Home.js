@@ -53,7 +53,6 @@ function Home() {
             </div>
             <div className="tile tile-orange">
                 <div className="tile-content page3">
-                    <img  className="test-image" src={page2} alt="Page2"/>
                     <div className="register-button-positioner">
                         <PickyButtonBlackXL variant="contained" onClick={toRegister} size="large">Registrate</PickyButtonBlackXL>
                     </div>
