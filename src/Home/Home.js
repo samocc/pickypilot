@@ -6,13 +6,13 @@ import {
 } from "../components/PickyButton/PickyButton";
 import RegisterModal from "../register_wizard/RegisterModal";
 import {useState} from "react";
-import page1 from '../logo.svg'
+import page1 from '../Home01.png'
 import page2 from '../Home02.png'
-import page3 from './Home03.PNG'
-import page4 from './Home04.PNG'
-import page5 from './Home05.PNG'
-import page6 from './Home06.PNG'
-import page7 from './Home07.PNG'
+import page3 from '../Home03.png'
+import page4 from '../Home04.png'
+import page5 from '../Home05.png'
+import page6 from '../Home06.png'
+import page7 from '../Home07.png'
 console.log(page1, page2, page3, page4, page5, page6, page7);
 
 function Home() {
