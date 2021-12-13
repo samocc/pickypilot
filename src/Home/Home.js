@@ -6,13 +6,14 @@ import {
 } from "../components/PickyButton/PickyButton";
 import RegisterModal from "../register_wizard/RegisterModal";
 import {useState} from "react";
-import './Home01.PNG'
-import './Home02.PNG'
-import './Home03.PNG'
-import './Home04.PNG'
-import './Home05.PNG'
-import './Home06.PNG'
-import './Home07.PNG'
+import page1 from './Home01.PNG'
+import page2 from './Home02.PNG'
+import page3 from './Home03.PNG'
+import page4 from './Home04.PNG'
+import page5 from './Home05.PNG'
+import page6 from './Home06.PNG'
+import page7 from './Home07.PNG'
+console.log(page1, page2, page3, page4, page5, page6, page7);
 
 function Home() {
     const navigate = useNavigate();
@@ -32,12 +33,12 @@ function Home() {
             <RegisterModal open={registerModalOpen} onClose={closeRegisterModal}/>
             <div className="font-test-wrapper">
                 <PickyButtonBlackXL variant="contained" onClick={toRegister2} size="large"> Registrate </PickyButtonBlackXL>
-                <div className="font-test demasiado">Demasiado</div>
-                <div className="font-test ft-Heebo">Picky</div>
-                <div className="font-test ft-Inter">Picky</div>
-                <div className="font-test ft-Poppins">Picky</div>
-                <div className="font-test ft-PublicSans">Picky</div>
-                <div className="font-test ft-Roboto">Picky</div>
+                {/*<div className="font-test demasiado">Demasiado</div>*/}
+                {/*<div className="font-test ft-Heebo">Picky</div>*/}
+                {/*<div className="font-test ft-Inter">Picky</div>*/}
+                {/*<div className="font-test ft-Poppins">Picky</div>*/}
+                {/*<div className="font-test ft-PublicSans">Picky</div>*/}
+                {/*<div className="font-test ft-Roboto">Picky</div>*/}
             </div>
             <div className="tile tile-white">
                 <div className="tile-content page1">
