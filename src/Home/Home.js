@@ -11,10 +11,10 @@ function Home() {
     const navigate = useNavigate();
     const [registerModalOpen, setRegisterModalOpen] = useState(false);
 
-    async function toRegister() {
+    async function toRegister2() {
         navigate('/register');
     }
-    async function toRegister2() {
+    async function toRegister() {
         setRegisterModalOpen(true)
     }
     async function closeRegisterModal() {
@@ -22,16 +22,15 @@ function Home() {
     }
     return(
         <div className="picky-home">
-            <div>
-                <span className="font-test ft-Heebo">Picky</span>
-                <span className="font-test ft-Inter">Picky</span>
-                <span className="font-test ft-Poppins">Picky</span>
-                <span className="font-test ft-PublicSans">Picky</span>
-                <span className="font-test ft-Roboto">Picky</span>
+            <RegisterModal open={registerModalOpen} onClose={closeRegisterModal}/>
+            <div className="font-test-wrapper">
+                <PickyButtonBlackXL variant="contained" onClick={toRegister2} size="large"> Registrate </PickyButtonBlackXL>
+                <div className="font-test ft-Heebo">Picky</div>
+                <div className="font-test ft-Inter">Picky</div>
+                <div className="font-test ft-Poppins">Picky</div>
+                <div className="font-test ft-PublicSans">Picky</div>
+                <div className="font-test ft-Roboto">Picky</div>
             </div>
-            <PickyButtonBlackXL variant="contained" onClick={toRegister2} size="large"> Registrate (modal) </PickyButtonBlackXL>
-            <PickyButtonOrangeXL variant="contained" onClick={toRegister} size="large"> Registrate (page) </PickyButtonOrangeXL>
-
             <div className="tile tile-white">
                 <div className="tile-content page1">
                     <div className="register-button-positioner">
@@ -40,11 +39,32 @@ function Home() {
                 </div>
             </div>
             <div className="tile tile-orange">
-                <div className="tile-content">
-
+                <div className="tile-content page2">
                 </div>
             </div>
-            <RegisterModal open={registerModalOpen} onClose={closeRegisterModal}/>
+            <div className="tile tile-orange">
+                <div className="tile-content page3">
+                    <div className="register-button-positioner">
+                        <PickyButtonBlackXL variant="contained" onClick={toRegister} size="large">Registrate</PickyButtonBlackXL>
+                    </div>
+                </div>
+            </div>
+            <div className="tile tile-white">
+                <div className="tile-content page4">
+                </div>
+            </div>
+            <div className="tile tile-white">
+                <div className="tile-content page5">
+                </div>
+            </div>
+            <div className="tile tile-white">
+                <div className="tile-content page6">
+                </div>
+            </div>
+            <div className="tile tile-white">
+                <div className="tile-content page7">
+                </div>
+            </div>
         </div>
     )
 }

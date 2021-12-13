@@ -19,30 +19,36 @@
     }
   }
   .page1 {
-    background-image: url("Home01.png");
+    background-image: url("Home01.PNG");
     .register-button-positioner {
       top: 80.5%;
-      //left: 20%;
       left: 6.3%;
     }
   }
   .page2 {
-    background-image: url("Home02.png");
+    background-image: url("Home02.PNG");
+    .register-button-positioner {
+
+    }
   }
   .page3 {
-    background-image: url("Home03.png");
+    background-image: url("Home03.PNG");
+    .register-button-positioner {
+      top: 82.8%;
+      left: 71.6%;
+    }
   }
   .page4 {
-    background-image: url("Home04.png");
+    background-image: url("Home04.PNG");
   }
   .page5 {
-    background-image: url("Home05.png");
+    background-image: url("Home05.PNG");
   }
   .page6 {
-    background-image: url("Home06.png");
+    background-image: url("Home06.PNG");
   }
   .page7 {
-    background-image: url("Home07.png");
+    background-image: url("Home07.PNG");
   }
 }
 .tile-white {
@@ -53,8 +59,13 @@
 }
 
 // FONT TESTS
+.font-test-wrapper {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+}
 .font-test {
-  padding: 20px;
+  padding-top: 20px;
   font-size: 60px;
 }
 .ft-Heebo {

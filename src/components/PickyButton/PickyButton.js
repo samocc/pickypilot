@@ -21,7 +21,7 @@ export const PickyButtonOrange = styled(Button)(({ theme }) => ({
 }));
 export const PickyButtonBlackXL = styled(Button)(({ theme }) => ({
     borderRadius: '32px',
-    padding: '6px 30px',
+    padding: '6px 32px',
     fontWeight: 400,
     letterSpacing:'2px',
     fontSize:'24px',
@@ -33,7 +33,7 @@ export const PickyButtonBlackXL = styled(Button)(({ theme }) => ({
 }));
 export const PickyButtonOrangeXL = styled(Button)(({ theme }) => ({
     borderRadius: '32px',
-    padding: '6px 30px',
+    padding: '6px 32px',
     fontWeight: 400,
     letterSpacing:'2px',
     fontSize:'24px',
@@ -41,6 +41,18 @@ export const PickyButtonOrangeXL = styled(Button)(({ theme }) => ({
     backgroundColor: '#E84839',
     '&:hover': {
         backgroundColor: '#BC1823',
+    },
+}));
+export const PickyButtonWhiteXL = styled(Button)(({ theme }) => ({
+    borderRadius: '32px',
+    padding: '6px 32px',
+    fontWeight: 400,
+    letterSpacing:'2px',
+    fontSize:'24px',
+    color: theme.palette.getContrastText('#EFEFEF'),
+    backgroundColor: '#EFEFEF',
+    '&:hover': {
+        backgroundColor: '#FAFAFA',
     },
 }));
 export const PickyButtonTrans = styled(Button)(({ theme }) => ({

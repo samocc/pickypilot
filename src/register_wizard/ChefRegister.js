@@ -108,7 +108,7 @@ function ChefRegister() {
                                         label="Email"
                                         value={formData.email}
                                         required={true}
-                                        error={errorState.email}
+                                        error={errorState.email.length > 0}
                                         helperText={errorState.email}
                                     />
                                 </div>
@@ -123,7 +123,7 @@ function ChefRegister() {
                                                 label="Estado de residencia"
                                                 variant="standard"
                                                 required={true}
-                                                error={errorState.ciudad}
+                                                error={errorState.ciudad.length > 0}
                                                 helperText={errorState.ciudad}
                                             />
                                         )}
