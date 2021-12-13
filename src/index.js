@@ -5,15 +5,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Amplify from 'aws-amplify';
 import config from './aws-exports';
-import { HashRouter } from "react-router-dom";
+// import { HashRouter } from "react-router-dom";
 Amplify.configure(config);
 
 ReactDOM.render(
-    <HashRouter>
         <React.StrictMode>
             <App />
-        </React.StrictMode>
-    </HashRouter>,
+        </React.StrictMode>,
   document.getElementById('root')
 );
 

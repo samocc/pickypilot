@@ -1,5 +1,5 @@
 import './Home.scss';
-import {useNavigate} from "react-router-dom";
+// import {useNavigate} from "react-router-dom";
 import {
     PickyButtonBlackXL,
     PickyButtonOrangeXL
@@ -16,11 +16,11 @@ import page7 from './Home07.PNG'
 console.log(page1, page2, page3, page4, page5, page6, page7);
 
 function Home() {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [registerModalOpen, setRegisterModalOpen] = useState(false);
 
     async function toRegister2() {
-        navigate('/register');
+        // navigate('/register');
     }
     async function toRegister() {
         setRegisterModalOpen(true)
