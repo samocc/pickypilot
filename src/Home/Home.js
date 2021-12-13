@@ -6,6 +6,13 @@ import {
 } from "../components/PickyButton/PickyButton";
 import RegisterModal from "../register_wizard/RegisterModal";
 import {useState} from "react";
+import './Home01.PNG'
+import './Home02.PNG'
+import './Home03.PNG'
+import './Home04.PNG'
+import './Home05.PNG'
+import './Home06.PNG'
+import './Home07.PNG'
 
 function Home() {
     const navigate = useNavigate();
