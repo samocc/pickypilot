@@ -3,12 +3,12 @@ import PickyRegister from "./PickyRegister";
 import Button from "@mui/material/Button";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import React from "react";
-// import {useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 function RegisterPage() {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     async function toHome() {
-        // navigate('/');
+        navigate('/');
     }
 
     return (
