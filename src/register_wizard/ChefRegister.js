@@ -40,7 +40,6 @@ function ChefRegister(props) {
     async function registerUser() {
         if (!validateForm(formData)) return;
         await API.graphql({ query: createRegistryMutation, variables: { input: formData } });
-
         onRegister(formData);
         setSuccessMessage('Registro exitoso: ' + formData.email);
         setFormData({...initialFormState, 'region': formData.region});
