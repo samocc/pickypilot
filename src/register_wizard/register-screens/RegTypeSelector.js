@@ -16,25 +16,14 @@ function RegTypeSelector(props) {
                     adoijaeidfjaeo opdiajedj oaidjaeid oidjaeidj doaeijdaei doaeijdeaidn oaeidjae oadijaei
                     diaejda aldijaeda oadijaed oadijae doaeidjea
                 </div>
-                {width > 880 ? (
-                    <div className="rs-overlay">
-                        <div className="overlay-column user-column">
-                            <PickyButtonOrange onClick={selectUser}>Registrar como usuario</PickyButtonOrange>
-                        </div>
-                        <div className="overlay-column chef-column">
-                            <PickyButtonBlack onClick={selectChef}>Registrar como proveedor</PickyButtonBlack>
-                        </div>
+                <div className={width > 880 ? "rs-overlay" : "rs-overlay-mobile"}>
+                    <div className="overlay-column user-column">
+                        <PickyButtonOrange onClick={selectUser}>Registrar como usuario</PickyButtonOrange>
                     </div>
-                ) :
-                    <div className="rs-overlay-mobile">
-                        <div className="overlay-column user-column">
-                            <PickyButtonOrange onClick={selectUser}>Registrar como usuario</PickyButtonOrange>
-                        </div>
-                        <div className="overlay-column chef-column">
-                            <PickyButtonBlack onClick={selectChef}>Registrar como proveedor</PickyButtonBlack>
-                        </div>
+                    <div className="overlay-column chef-column">
+                        <PickyButtonBlack onClick={selectChef}>Registrar como proveedor</PickyButtonBlack>
                     </div>
-                }
+                </div>
             </div>
         </div>
     );
