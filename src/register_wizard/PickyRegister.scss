@@ -17,6 +17,9 @@
     }
     .picky-register-body{
         flex-grow: 1;
+        &.mobile {
+            margin-top: 30px;
+        }
     }
     .picky-register-footer{
         display: none;

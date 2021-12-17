@@ -11,10 +11,12 @@ import RegTypeSelector from "./register-screens/RegTypeSelector";
 import CheckIcon from "@mui/icons-material/Check";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {listRegistries} from "../graphql/queries";
+import useWindowDimensions from "../services/useWindowDimensions.hook";
 
 function PickyRegister() {
     const [registry, setRegistry] = useState([]);
     const [selectionScreen, setSelectionScreen] = useState(0);
+    const {width} = useWindowDimensions();
 
     useEffect(() => {
         fetchRegistry();
@@ -53,7 +55,7 @@ function PickyRegister() {
                         </Button>
                     </div>
                 }
-                <div className="picky-register-body">
+                <div className={`picky-register-body ${width > 880 ? "" : "mobile"}`}>
                     {selectionScreen === 0 ? <RegTypeSelector selectUser={selectUser} selectChef={selectChef} /> : null}
                     {selectionScreen === 1 ? <UserRegister onRegister={onRegister}/> : null}
                     {selectionScreen === 2 ? <ChefRegister onRegister={onRegister}/> : null}
