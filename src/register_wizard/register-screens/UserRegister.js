@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
-import './UserRegister.scss'
+import './RegisterScreen.scss'
 import '@aws-amplify/ui-react/styles.css';
 import {API} from "aws-amplify";
-import {createRegistry as createRegistryMutation} from "../graphql/mutations";
+import {createRegistry as createRegistryMutation} from "../../graphql/mutations";
 import Button from '@mui/material/Button';
 import {Autocomplete, TextField} from "@mui/material";
-import {estados} from "../regionselector/estados";
-import SuccessPanel from "./sucess-panel/SuccessPanel";
+import {estados} from "../../regionselector/estados";
+import SuccessPanel from "../sucess-panel/SuccessPanel";
+import Grid from "@mui/material/Grid";
 
 const initialFormState = {
     email: '',
@@ -70,24 +71,15 @@ function UserRegister(props) {
     }
 
     return (
-        <div className="user-register">
-            <div className="user-register-header">User register</div>
-            <div className="user-register-body">
+        <div className="register-screen">
+            <div className="rs-header">User register</div>
+            <div className="rs-body">
+                <div className='rs-form'>
                 {successMessage.length ? (
                     <SuccessPanel message={successMessage}/>
                 ) :
-                    <div className='user-register-form'>
-                        <div className="register-choro">
-                            <p>
-                                Bla bla blaaa blabla bla blaaa bla ldijeaiof aifhaei oaeihfdae oiaeufhaeu ofihaef
-                                aoiefjwsef ofiaehfn foaifhiae ofiaej
-                                Bla bla blaaa blabla bla blaaa bla ldijeaiof aifhaei oaeihfdae oiaeufhaeu ofihaef
-                                POI9DJaidj CPOAJFDOAIE  dopaeijdiae doiaejd poidjae doaiejdeai oi
-                                Bla bla blaaa blabla bla blaaa bla ldijeaiof aifhaei oaeihfdae oiaeufhaeu ofihaef
-                                aoiefjwsef ofiaehfn foaifhiae ofiaej
-                                Bla bla blaaa blabla bla blaaa bla ldijeaiof aifhaei oaeihfdae oiaeufhaeu ofihaef
-                                aoiefjwsef ofiaehfn foaifhiae ofiaej
-                            </p>
+                    <div>
+                        <div className="rs-choro">
                             <p>
                                 Bla bla blaaa blabla bla blaaa bla ldijeaiof aifhaei oaeihfdae oiaeufhaeu ofihaef
                                 aoiefjwsef ofiaehfn foaifhiae ofiaej
@@ -99,43 +91,42 @@ function UserRegister(props) {
                                 aoiefjwsef ofiaehfn foaifhiae ofiaej
                             </p>
                         </div>
-                        <div className="columns-container">
-                            <div className="columns">
-                                <div className="column is-half">
-                                    <TextField
-                                        fullWidth
-                                        variant="standard"
-                                        onChange={onEmailChange}
-                                        label="Email"
-                                        value={formData.email}
-                                        required={true}
-                                        error={errorState.email.length > 0}
-                                        helperText={errorState.email}
-                                    />
-                                </div>
-                                <div className="column is-half">
-                                    <Autocomplete
-                                        {...defaultProps}
-                                        disableClearable
-                                        onChange={onRegionChange}
-                                        renderInput={(params) => (
-                                            <TextField
-                                                {...params}
-                                                label="Estado de residencia"
-                                                variant="standard"
-                                                required={true}
-                                                error={errorState.region.length > 0}
-                                                helperText={errorState.region}
-                                            />
-                                        )}
-                                    />
-                                </div>
-                            </div>
-                        </div>
+                        <Grid container spacing={2}>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    fullWidth
+                                    variant="standard"
+                                    onChange={onEmailChange}
+                                    label="Email"
+                                    value={formData.email}
+                                    required={true}
+                                    error={errorState.email.length > 0}
+                                    helperText={errorState.email}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <Autocomplete
+                                    {...defaultProps}
+                                    disableClearable
+                                    onChange={onRegionChange}
+                                    renderInput={(params) => (
+                                        <TextField
+                                            {...params}
+                                            label="Estado de residencia"
+                                            variant="standard"
+                                            required={true}
+                                            error={errorState.region.length > 0}
+                                            helperText={errorState.region}
+                                        />
+                                    )}
+                                />
+                            </Grid>
+                        </Grid>
                     </div>
                 }
+                </div>
             </div>
-            <div className="user-register-footer">
+            <div className="rs-footer">
                 <div className="register-button">
                     <Button
                         variant="contained"

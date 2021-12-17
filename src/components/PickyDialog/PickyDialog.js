@@ -3,7 +3,7 @@ import Dialog from "@mui/material/Dialog";
 
 export const PickyDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiPaper-root': {
-        maxWidth: '98%;',
-        maxHeight: '98%'
+        maxWidth: '95%;',
+        maxHeight: '95%'
     }
 }));

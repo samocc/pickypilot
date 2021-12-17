@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
-import './UserRegister.scss'
+import './RegisterScreen.scss'
 import '@aws-amplify/ui-react/styles.css';
 import {API} from "aws-amplify";
-import {createRegistry as createRegistryMutation} from "../graphql/mutations";
+import {createRegistry as createRegistryMutation} from "../../graphql/mutations";
 import Button from '@mui/material/Button';
 import {Autocomplete, TextField} from "@mui/material";
-import {estados} from "../regionselector/estados";
+import {estados} from "../../regionselector/estados";
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import SuccessPanel from "./sucess-panel/SuccessPanel";
+import SuccessPanel from "../sucess-panel/SuccessPanel";
+import Grid from '@mui/material/Grid';
 
 const initialFormState = {
     email: '',
@@ -80,16 +81,15 @@ function ChefRegister(props) {
     }
 
     return (
-        <div className="user-register">
-            <div className="user-register-header">Chef register</div>
-            <div className="user-register-body">
-                {successMessage.length ? (
-                        <SuccessPanel message={successMessage}/>
-                    ) :
-                    <div className='user-register-form'>
-                        <div className="columns-container">
-                            <div className="columns">
-                                <div className="column is-half">
+        <div className="register-screen">
+            <div className="rs-header">Chef register</div>
+            <div className="rs-body">
+                <div className="rs-form">
+                    {successMessage.length ? (
+                            <SuccessPanel message={successMessage}/>
+                        ) :
+                        <Grid container spacing={2}>
+                                <Grid item xs={12} sm={6}>
                                     <TextField
                                         fullWidth
                                         variant="standard"
@@ -100,8 +100,8 @@ function ChefRegister(props) {
                                         error={errorState.email.length > 0}
                                         helperText={errorState.email}
                                     />
-                                </div>
-                                <div className="column is-half">
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
                                     <Autocomplete
                                         {...defaultProps}
                                         disableClearable
@@ -117,18 +117,16 @@ function ChefRegister(props) {
                                             />
                                         )}
                                     />
-                                </div>
-                            </div>
-                            <div className="columns">
-                                <div className="column-grow">
+                                </Grid>
+                                <Grid item xs={12} sm>
                                     <TextField
                                         fullWidth
                                         onChange={e => setFormData({ ...formData, 'esp': e.target.value})}
                                         label="Especialidad"
                                         value={formData.esp}
                                     />
-                                </div>
-                                <div className="column-narrow">
+                                </Grid>
+                                <Grid item xs={12} sm="auto">
                                     <div className="exp-label">
                                         Nivel de experiencia
                                     </div>
@@ -149,34 +147,32 @@ function ChefRegister(props) {
                                             Experto
                                         </ToggleButton>
                                     </ToggleButtonGroup>
-                                </div>
-                            </div>
-                            <div className="single-column">
-                                <TextField
-                                    fullWidth
-                                    label="Descripción"
-                                    multiline
-                                    rows={4}
-                                    value={formData.desc}
-                                    onChange={e => setFormData({ ...formData, 'desc': e.target.value})}
-                                    placeholder="Describe tu experiencia culinaria"
-                                />
-                            </div>
-                            <div className="single-column">
-                                <TextField
-                                    fullWidth
-                                    label="Portfolio"
-                                    value={formData.portfolio}
-                                    onChange={e => setFormData({ ...formData, 'portfolio': e.target.value})}
-                                    placeholder="Ingresa un link donde se muestre tu trabajo (página web, red social, etc)"
-                                />
-                            </div>
-
-                        </div>
-                    </div>
-                }
+                                </Grid>
+                                <Grid item xs={12} >
+                                    <TextField
+                                        fullWidth
+                                        label="Descripción"
+                                        multiline
+                                        rows={4}
+                                        value={formData.desc}
+                                        onChange={e => setFormData({ ...formData, 'desc': e.target.value})}
+                                        placeholder="Describe tu experiencia culinaria"
+                                    />
+                                </Grid>
+                                <Grid item xs={12} >
+                                    <TextField
+                                        fullWidth
+                                        label="Portfolio"
+                                        value={formData.portfolio}
+                                        onChange={e => setFormData({ ...formData, 'portfolio': e.target.value})}
+                                        placeholder="Ingresa un link donde se muestre tu trabajo (página web, red social, etc)"
+                                    />
+                                </Grid>
+                            </Grid>
+                    }
+                </div>
             </div>
-            <div className="user-register-footer">
+            <div className="rs-footer">
                 <div className="register-button">
                     <Button
                         variant="contained"
