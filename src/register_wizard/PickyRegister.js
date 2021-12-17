@@ -16,7 +16,7 @@ import useWindowDimensions from "../services/useWindowDimensions.hook";
 function PickyRegister() {
     const [registry, setRegistry] = useState([]);
     const [selectionScreen, setSelectionScreen] = useState(0);
-    const {width} = useWindowDimensions();
+    const {isMobile} = useWindowDimensions();
 
     useEffect(() => {
         fetchRegistry();
@@ -49,16 +49,10 @@ function PickyRegister() {
         <div className="picky-register-wrapper">
             <div className="picky-register">
                 {selectionScreen === 0 ? null :
-                    <div className="return-wrapper">
-                        { width < 880 ? (
-                            <Button onClick={showSelectionScreen}>
-                                <KeyboardArrowLeftIcon/>
-                            </Button>
-                        ) : (
-                            <Button startIcon={<KeyboardArrowLeftIcon/>} onClick={showSelectionScreen}>
-                                <span>Regresar</span>
-                            </Button>
-                        )}
+                    <div className={isMobile ? "return-wrapper-mobile": "return-wrapper"}>
+                        <Button startIcon={<KeyboardArrowLeftIcon/>} onClick={showSelectionScreen}>
+                            <span>Regresar</span>
+                        </Button>
                     </div>
                 }
                 <div className="picky-register">
