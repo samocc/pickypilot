@@ -46,7 +46,7 @@ function PickyRegister() {
     }
 
     return(
-        <div className="picky-register-wrapper">
+        <div className={isMobile ? "picky-register-wrapper mobile": "picky-register-wrapper"}>
             <div className="picky-register">
                 {selectionScreen === 0 ? null :
                     <div className={isMobile ? "return-wrapper-mobile": "return-wrapper"}>

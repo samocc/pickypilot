@@ -16,6 +16,9 @@
     flex-grow: 1;
     .rs-form {
       padding: 20px 40px 0;
+      &.mobile {
+        padding: 20px 10px 0;
+      }
       .register-choro {
         margin-bottom: 40px;
       }

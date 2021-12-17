@@ -8,6 +8,7 @@ import {Autocomplete, TextField} from "@mui/material";
 import {estados} from "../../regionselector/estados";
 import SuccessPanel from "../sucess-panel/SuccessPanel";
 import Grid from "@mui/material/Grid";
+import useWindowDimensions from "../../services/useWindowDimensions.hook";
 
 const initialFormState = {
     email: '',
@@ -32,6 +33,7 @@ function UserRegister(props) {
     const [formData, setFormData] = useState(initialFormState);
     const [successMessage, setSuccessMessage] = useState('');
     const [errorState, setErrorState] = useState(initialErrorState);
+    const {isMobile} = useWindowDimensions()
 
     async function registerUser() {
         if (!validateForm(formData)) return;
@@ -74,7 +76,7 @@ function UserRegister(props) {
         <div className="register-screen">
             <div className="rs-header">User register</div>
             <div className="rs-body">
-                <div className='rs-form'>
+                <div className={isMobile ? 'rs-form mobile' : 'rs-form'}>
                 {successMessage.length ? (
                     <SuccessPanel message={successMessage}/>
                 ) :

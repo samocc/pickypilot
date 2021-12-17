@@ -2,6 +2,9 @@
     max-width: 800px;
     height: 700px;
     width: 100%;
+    &.mobile {
+        height: 550px;
+    }
 }
 .picky-register {
     height: 100%;

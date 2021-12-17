@@ -32,13 +32,13 @@ function Home() {
         <div className="picky-home">
             <RegisterModal open={registerModalOpen} onClose={closeRegisterModal}/>
             <div className="font-test-wrapper">
+                <span className="font-test demasiado">Demasiado</span>
+                <span className="font-test ft-Heebo"> Picky </span>
+                <span className="font-test ft-Inter"> Picky </span>
+                <span className="font-test ft-Poppins"> Picky </span>
+                <span className="font-test ft-PublicSans"> Picky </span>
+                <span className="font-test ft-Roboto"> Picky </span>
                 <PickyButtonBlackXL variant="contained" onClick={toRegister2} size="large"> Registrate </PickyButtonBlackXL>
-                {/*<div className="font-test demasiado">Demasiado</div>*/}
-                {/*<div className="font-test ft-Heebo">Picky</div>*/}
-                {/*<div className="font-test ft-Inter">Picky</div>*/}
-                {/*<div className="font-test ft-Poppins">Picky</div>*/}
-                {/*<div className="font-test ft-PublicSans">Picky</div>*/}
-                {/*<div className="font-test ft-Roboto">Picky</div>*/}
             </div>
             <div className="tile tile-white">
                 <div className="tile-content page1">
