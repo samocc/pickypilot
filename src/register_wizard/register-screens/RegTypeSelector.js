@@ -16,7 +16,7 @@ function RegTypeSelector(props) {
                     adoijaeidfjaeo opdiajedj oaidjaeid oidjaeidj doaeijdaei doaeijdeaidn oaeidjae oadijaei
                     diaejda aldijaeda oadijaed oadijae doaeidjea
                 </div>
-                <div className={isMobile ? "rs-overlay" : "rs-overlay-mobile"}>
+                <div className={isMobile ? "rs-overlay-mobile" : "rs-overlay"}>
                     <div className="overlay-column user-column">
                         <PickyButtonOrange onClick={selectUser}>Registrar como usuario</PickyButtonOrange>
                     </div>
