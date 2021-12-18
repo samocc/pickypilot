@@ -2,8 +2,8 @@ import React from 'react';
 import './App.scss';
 import '@aws-amplify/ui-react/styles.css';
 import { Routes, Route } from "react-router-dom";
-import Home from "./Home/Home";
 import RegisterPage from "./register_wizard/RegisterPage";
+import Home from "./Home/Home";
 
 function App() {
     return (

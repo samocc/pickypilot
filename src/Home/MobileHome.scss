@@ -1,0 +1,46 @@
+@import 'src/styles/Picky';
+
+.picky-home-mobile {
+    .tile {
+        display:block;
+        height: 667px;
+        width: 100%;
+        .tile-content {
+            display: block;
+            height: 100%;
+            width: 375px;
+            margin: auto;
+            background-size: contain;
+            position: relative;
+            .register-button-positioner {
+                position:absolute;
+            }
+        }
+        .page1 {
+            background-image: url("../Mobile01.png");
+            .register-button-positioner {
+                top: 80.5%;
+                left: 6.3%;
+            }
+        }
+        .page2 {
+            background-image: url("../Mobile02.png");
+            .register-button-positioner {
+
+            }
+        }
+        .page3 {
+            background-image: url("../Mobile03.png");
+            .register-button-positioner {
+                top: 80.5%;
+                left: 6.3%;
+            }
+        }
+    }
+    .tile-white {
+        background-color: $background-white;
+    }
+    .tile-orange {
+        background-color: $picky-orange;
+    }
+}
