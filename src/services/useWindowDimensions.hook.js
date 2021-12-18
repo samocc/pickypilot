@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
 
 const mobileBreakpoint = 880;
+const fullWidth = 1366;
 
 function getWindowDimensions() {
     const { innerWidth: width, innerHeight: height } = window;
     const isMobile = width < mobileBreakpoint ;
+    const scale = width / fullWidth > 1 ? 1 : width / fullWidth;
     return {
         width,
         height,
-        isMobile
+        isMobile,
+        scale
     };
 }
 

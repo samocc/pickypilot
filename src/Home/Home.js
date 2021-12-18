@@ -1,8 +1,5 @@
 import './Home.scss';
-import {
-    PickyButtonBlackXL,
-    PickyButtonOrangeXL
-} from "../components/PickyButton/PickyButton";
+import {PickyButtonFlex} from "../components/PickyButton/PickyButton";
 import RegisterModal from "../register_wizard/RegisterModal";
 import {useState} from "react";
 import page1 from '../Home01.png'
@@ -12,10 +9,12 @@ import page4 from '../Home04.png'
 import page5 from '../Home05.png'
 import page6 from '../Home06.png'
 import page7 from '../Home07.png'
+import useWindowDimensions from "../services/useWindowDimensions.hook";
 console.log(page1, page2, page3, page4, page5, page6, page7);
 
 function Home() {
     const [registerModalOpen, setRegisterModalOpen] = useState(false);
+    const {scale} = useWindowDimensions();
 
     async function toRegister() {
         setRegisterModalOpen(true)
@@ -37,7 +36,8 @@ function Home() {
             <div className="tile tile-white">
                 <div className="tile-content page1">
                     <div className="register-button-positioner">
-                        <PickyButtonOrangeXL variant="contained" onClick={toRegister} size="large">Registrate</PickyButtonOrangeXL>
+                        {/*<PickyButtonOrangeXL variant="contained" onClick={toRegister} size="large">Registrate</PickyButtonOrangeXL>*/}
+                        <PickyButtonFlex variant="contained" scale={scale} pickycolor="orange" onClick={toRegister} size="large">Registrate</PickyButtonFlex>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@ function Home() {
             <div className="tile tile-orange">
                 <div className="tile-content page3">
                     <div className="register-button-positioner">
-                        <PickyButtonBlackXL variant="contained" onClick={toRegister} size="large">Registrate</PickyButtonBlackXL>
+                        <PickyButtonFlex variant="contained" scale={scale} pickycolor="black" onClick={toRegister} size="large">Registrate</PickyButtonFlex>
                     </div>
                 </div>
             </div>
