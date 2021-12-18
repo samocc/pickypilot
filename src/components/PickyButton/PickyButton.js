@@ -1,5 +1,6 @@
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
+import useWindowDimensions from "../../services/useWindowDimensions.hook";
 
 const colors = {
     orange: {
@@ -66,3 +67,17 @@ export const PickyButtonXL = styled(Button)(({theme, pickycolor = 'black'}) => (
         backgroundColor: colors[pickycolor].hover,
     },
 }));
+export function PickyButtonScaled (params) {
+    const {onClick, pickycolor, text} = params;
+    const {scale} = useWindowDimensions();
+    return (
+        <div>
+            {scale < 1
+                ? <PickyButtonFlex variant="contained" pickycolor={pickycolor}
+                                   onClick={onClick}>{text}</PickyButtonFlex>
+                : <PickyButtonXL variant="contained" pickycolor={pickycolor}
+                                 onClick={onClick}>{text}</PickyButtonXL>
+            }
+        </div>
+    )
+}
