@@ -1,5 +1,5 @@
-import './DesktopHome.scss';
-import {PickyButtonXL} from "../components/PickyButton/PickyButton";
+import './DesktopFlex.scss';
+import {PickyButtonScaled} from "../components/PickyButton/PickyButton";
 import RegisterModal from "../register_wizard/RegisterModal";
 import {useState} from "react";
 import page1 from '../Home01.png'
@@ -11,7 +11,7 @@ import page6 from '../Home06.png'
 import page7 from '../Home07.png'
 console.log(page1, page2, page3, page4, page5, page6, page7);
 
-function DesktopHome() {
+function DesktopFlex() {
     const [registerModalOpen, setRegisterModalOpen] = useState(false);
 
     async function toRegister() {
@@ -21,7 +21,7 @@ function DesktopHome() {
         setRegisterModalOpen(false);
     }
     return(
-        <div className="picky-desktop-home">
+        <div className="picky-desktop-flex">
             <RegisterModal open={registerModalOpen} onClose={closeRegisterModal}/>
             <div className="font-test-wrapper">
                 {/*<span className="font-test demasiado">Demasiado</span>*/}
@@ -34,7 +34,7 @@ function DesktopHome() {
             <div className="tile tile-white">
                 <div className="tile-content page1">
                     <div className="register-button-positioner">
-                        <PickyButtonXL variant="contained" pickycolor="orange" onClick={toRegister}>Registrate</PickyButtonXL>
+                        <PickyButtonScaled onClick={toRegister} pickycolor="orange" text="Registrate"/>
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@ function DesktopHome() {
             <div className="tile tile-orange">
                 <div className="tile-content page3">
                     <div className="register-button-positioner">
-                        <PickyButtonXL variant="contained" pickycolor="black" onClick={toRegister} >Registrate</PickyButtonXL>
+                        <PickyButtonScaled onClick={toRegister} pickycolor="black" text="Registrate"/>
                     </div>
                 </div>
             </div>
@@ -69,4 +69,4 @@ function DesktopHome() {
     )
 }
 
-export default DesktopHome;
+export default DesktopFlex;

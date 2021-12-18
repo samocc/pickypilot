@@ -1,11 +1,11 @@
 import useWindowDimensions from "../services/useWindowDimensions.hook";
 import MobileHome from "./MobileHome";
-import FlexHome from "./FlexHome";
+import DesktopHome from "./DesktopHome";
 
 function Home() {
     const {isMobile} = useWindowDimensions()
 
-    return <div>{isMobile ? <MobileHome /> : <FlexHome/>}</div>
+    return <div>{isMobile ? <MobileHome /> : <DesktopHome/>}</div>
 }
 
 export default Home;

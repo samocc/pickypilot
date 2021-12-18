@@ -1,5 +1,5 @@
-import './MobileHome.scss';
-import {PickyButtonXL} from "../components/PickyButton/PickyButton";
+import './MobileFlex.scss';
+import {PickyButtonMobileFlex, PickyButtonXL} from "../components/PickyButton/PickyButton";
 import RegisterModal from "../register_wizard/RegisterModal";
 import {useState} from "react";
 import page1 from '../Mobile01.png'
@@ -7,7 +7,7 @@ import page2 from '../Mobile02.png'
 import page3 from '../Mobile03.png'
 console.log(page1, page2, page3);
 
-function MobileHome() {
+function MobileFlex() {
     const [registerModalOpen, setRegisterModalOpen] = useState(false);
 
     async function toRegister() {
@@ -17,24 +17,30 @@ function MobileHome() {
         setRegisterModalOpen(false);
     }
     return(
-        <div className="picky-mobile-home">
+        <div className="picky-mobile-flex">
             <RegisterModal open={registerModalOpen} onClose={closeRegisterModal}/>
             <div className="tile tile-white">
                 <div className="tile-content page1">
+                    <img src={page1} alt="page1"/>
+                    <div className="mobile-img-overlay"/>
                     <div className="register-button-positioner">
-                        <PickyButtonXL pickycolor="orange" variant="contained" onClick={toRegister} >Registrate</PickyButtonXL>
+                        <PickyButtonMobileFlex pickycolor="orange" variant="contained" onClick={toRegister} >Registrate</PickyButtonMobileFlex>
                     </div>
                 </div>
             </div>
             <div className="tile tile-orange">
                 <div className="tile-content page2">
+                    <img src={page2} alt="page2"/>
+                    <div className="mobile-img-overlay"/>
                     <div className="register-button-positioner">
-                        <PickyButtonXL pickycolor="black" variant="contained" onClick={toRegister} >Registrate</PickyButtonXL>
+                        <PickyButtonMobileFlex pickycolor="black" variant="contained" onClick={toRegister} >Registrate</PickyButtonMobileFlex>
                     </div>
                 </div>
             </div>
             <div className="tile tile-orange">
                 <div className="tile-content page3">
+                    <img src={page3} alt="page3"/>
+                    <div className="mobile-img-overlay"/>
                     <div className="register-button-positioner">
                         <PickyButtonXL pickycolor="black" variant="contained" onClick={toRegister} >Registrate</PickyButtonXL>
                     </div>
@@ -60,4 +66,4 @@ function MobileHome() {
     )
 }
 
-export default MobileHome;
+export default MobileFlex;

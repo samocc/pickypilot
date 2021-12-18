@@ -32,6 +32,12 @@ const flexValues = {
     letterSpacing: '0.1vw',
     fontSize: '1.85vw'
 }
+const flexValuesMobile = {
+    borderRadius: '6.75vw',
+    padding: '1.25vw 6.75vw',
+    letterSpacing: '0.275vw',
+    fontSize: '5vw'
+}
 
 export const PickyButton = styled(Button)(({ theme, pickycolor = 'black' }) => ({
     borderRadius: baseValues.borderRadius,
@@ -49,6 +55,18 @@ export const PickyButtonFlex = styled(Button)(({theme, pickycolor = 'black'}) =>
     fontWeight: 400,
     letterSpacing: flexValues.letterSpacing,
     fontSize:flexValues.fontSize,
+    color: theme.palette.getContrastText(colors[pickycolor].def),
+    backgroundColor: colors[pickycolor].def,
+    '&:hover': {
+        backgroundColor: colors[pickycolor].hover,
+    },
+}));
+export const PickyButtonMobileFlex = styled(Button)(({theme, pickycolor = 'black'}) => ({
+    borderRadius: flexValuesMobile.borderRadius,
+    padding: flexValuesMobile.padding,
+    fontWeight: 400,
+    letterSpacing: flexValuesMobile.letterSpacing,
+    fontSize:flexValuesMobile.fontSize,
     color: theme.palette.getContrastText(colors[pickycolor].def),
     backgroundColor: colors[pickycolor].def,
     '&:hover': {

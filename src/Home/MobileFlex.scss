@@ -1,14 +1,11 @@
 @import 'src/styles/Picky';
 
-.picky-mobile-home {
+.picky-mobile-flex {
     .tile {
         display:block;
-        height: 667px;
         width: 100%;
         .tile-content {
             display: flex;
-            height: 100%;
-            width: 375px;
             margin: auto;
             background-size: contain;
             position: relative;
@@ -16,21 +13,29 @@
             .register-button-positioner {
                 position:absolute;
             }
+            .mobile-img-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%
+            }
+            img {
+                width: 100%;
+                height: auto;
+            }
         }
         .page1 {
-            background-image: url("../Mobile01.png");
             .register-button-positioner {
                 top: 85%;
             }
         }
         .page2 {
-            background-image: url("../Mobile02.png");
             .register-button-positioner {
                 top: 85%;
             }
         }
         .page3 {
-            background-image: url("../Mobile03.png");
             .register-button-positioner {
                 top: 85%;
             }

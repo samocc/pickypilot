@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const mobileBreakpoint = 880;
+const mobileBreakpoint = 820;
 const fullWidth = 1366;
 
 function getWindowDimensions() {
