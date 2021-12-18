@@ -1,5 +1,5 @@
 import './MobileFlex.scss';
-import {PickyButtonMobileFlex, PickyButtonXL} from "../components/PickyButton/PickyButton";
+import {PickyButtonMobileFlex} from "../components/PickyButton/PickyButton";
 import RegisterModal from "../register_wizard/RegisterModal";
 import {useState} from "react";
 import page1 from '../Mobile01.png'
@@ -42,7 +42,7 @@ function MobileFlex() {
                     <img src={page3} alt="page3"/>
                     <div className="mobile-img-overlay"/>
                     <div className="register-button-positioner">
-                        <PickyButtonXL pickycolor="black" variant="contained" onClick={toRegister} >Registrate</PickyButtonXL>
+                        <PickyButtonMobileFlex pickycolor="black" variant="contained" onClick={toRegister} >Registrate</PickyButtonMobileFlex>
                     </div>
                 </div>
             </div>
