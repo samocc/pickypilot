@@ -4,7 +4,6 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-
   .rs-header {
     text-align: center;
     font-size: 2em;
@@ -12,21 +11,14 @@
     font-weight: 700;
   }
   .rs-body {
-    position: relative;
     flex-grow: 1;
     .rs-form {
-      padding: 20px 40px 0;
-      &.mobile {
-        padding: 20px 10px 0;
-      }
+      padding-top: 20px;
       .register-choro {
         margin-bottom: 40px;
       }
     }
     .rs-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
       height: 100%;
       width: 100%;
       display: flex;
@@ -41,35 +33,22 @@
           margin-bottom: 40px;
         }
       }
-    }
-    .rs-overlay-mobile {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      .overlay-column {
-        flex:1;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        button {
-          margin-top:auto;
-          margin-bottom: 40px;
+      &.mobile {
+        flex-direction: column;
+        .overlay-column {
+          height: unset;
+          width: 100%;
         }
       }
     }
-    .user-column {
-      background-color: white;
-    }
-    .chef-column {
-      background-color: $picky-orange;
-    }
-
-
   }
+  .user-column {
+    background-color: white;
+  }
+  .chef-column {
+    background-color: $picky-orange;
+  }
+
   .rs-footer{
     padding: 20px 40px;
     .register-button {

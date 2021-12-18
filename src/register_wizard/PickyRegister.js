@@ -49,17 +49,15 @@ function PickyRegister() {
         <div className={isMobile ? "picky-register-wrapper mobile": "picky-register-wrapper"}>
             <div className="picky-register">
                 {selectionScreen === 0 ? null :
-                    <div className={isMobile ? "return-wrapper-mobile": "return-wrapper"}>
+                    <div className="return-wrapper">
                         <Button startIcon={<KeyboardArrowLeftIcon/>} onClick={showSelectionScreen}>
                             <span>Regresar</span>
                         </Button>
                     </div>
                 }
-                <div className="picky-register">
-                    {selectionScreen === 0 ? <RegTypeSelector selectUser={selectUser} selectChef={selectChef} /> : null}
-                    {selectionScreen === 1 ? <UserRegister onRegister={onRegister}/> : null}
-                    {selectionScreen === 2 ? <ChefRegister onRegister={onRegister}/> : null}
-                </div>
+                {selectionScreen === 0 ? <RegTypeSelector selectUser={selectUser} selectChef={selectChef} /> : null}
+                {selectionScreen === 1 ? <div className="picky-register-padded"><UserRegister onRegister={onRegister}/></div> : null}
+                {selectionScreen === 2 ? <div className="picky-register-padded"><ChefRegister onRegister={onRegister}/></div> : null}
             </div>
             <div className="registry-list">
                 {

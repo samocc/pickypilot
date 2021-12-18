@@ -1,44 +1,42 @@
 .picky-register-wrapper{
-    max-width: 800px;
+    width: 800px;
     height: 700px;
-    width: 100%;
-    &.mobile {
-        height: 550px;
-    }
-}
-.picky-register {
-    height: 100%;
-    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
-
-    .picky-register-header {
-        text-align: center;
-        font-size: 2em;
-        padding: 20px 20px;
-        font-weight: 700;
-    }
-    .picky-register-body{
+    .picky-register {
+        position: relative;
         flex-grow: 1;
-    }
-    .picky-register-footer{
-        display: none;
-        padding: 20px 40px;
-        .footer-right {
-            float: right;
+        .picky-register-padded {
+            padding: 0 40px;
+            height: 100%;
+        }
+        .picky-register-header {
+            text-align: center;
+            font-size: 2em;
+            padding: 20px 20px;
+            font-weight: 700;
+        }
+        .return-wrapper {
+            position:absolute;
+            top: 30px;
+            left:40px;
         }
     }
-    .return-wrapper {
-        position:absolute;
-        top: 30px;
-        left:40px;
-    }
-    .return-wrapper-mobile {
-        position:absolute;
-        top: 70px;
-        left:5px;
+    &.mobile {
+        //height: 550px;
+        .return-wrapper {
+            position:absolute;
+            top: 70px;
+            left:5px;
+        }
+        .picky-register-padded {
+            padding: 0 10px;
+        }
     }
 }
+
 
 .registry-list {
     position:fixed;
