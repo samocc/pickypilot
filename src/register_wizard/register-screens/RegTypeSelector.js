@@ -1,6 +1,6 @@
 import React from "react";
 import './RegisterScreen.scss'
-import {PickyButtonBlack, PickyButtonOrange} from "../../components/PickyButton/PickyButton";
+import {PickyButton} from "../../components/PickyButton/PickyButton";
 import useWindowDimensions from "../../services/useWindowDimensions.hook";
 
 
@@ -14,10 +14,10 @@ function RegTypeSelector(props) {
             <div className="rs-body">
                 <div className={isMobile ? "rs-overlay mobile" : "rs-overlay"}>
                     <div className="overlay-column user-column">
-                        <PickyButtonOrange onClick={selectUser}>Registrar como usuario</PickyButtonOrange>
+                        <PickyButton pickycolor="orange" onClick={selectUser}>Registrar como usuario</PickyButton>
                     </div>
                     <div className="overlay-column chef-column">
-                        <PickyButtonBlack onClick={selectChef}>Registrar como proveedor</PickyButtonBlack>
+                        <PickyButton pickycolor="black" onClick={selectChef}>Registrar como proveedor</PickyButton>
                     </div>
                 </div>
             </div>

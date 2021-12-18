@@ -1,0 +1,60 @@
+@import 'src/styles/Picky';
+
+.picky-home-flex {
+    .tile {
+        display:block;
+        //height: 768px;
+        width: 100%;
+        .tile-content {
+            display: block;
+            //height: 100%;
+            aspect-ratio: 16 / 9;
+            width: 1366px;
+            max-width: 100vw;
+            margin: auto;
+            background-size: contain;
+            position: relative;
+            .register-button-positioner {
+                position:absolute;
+            }
+        }
+        .page1 {
+            background-image: url("../Home01.png");
+            .register-button-positioner {
+                top: 80.35%;
+                left: 6.3%;
+            }
+        }
+        .page2 {
+            background-image: url("../Home02.png");
+            .register-button-positioner {
+
+            }
+        }
+        .page3 {
+            background-image: url("../Home03.png");
+            .register-button-positioner {
+                top: 82.8%;
+                left: 71.6%;
+            }
+        }
+        .page4 {
+            background-image: url("../Home04.png");
+        }
+        .page5 {
+            background-image: url("../Home05.png");
+        }
+        .page6 {
+            background-image: url("../Home06.png");
+        }
+        .page7 {
+            background-image: url("../Home07.png");
+        }
+    }
+    .tile-white {
+        background-color: $background-white;
+    }
+    .tile-orange {
+        background-color: $picky-orange;
+    }
+}

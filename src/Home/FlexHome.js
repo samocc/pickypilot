@@ -1,5 +1,7 @@
-import './DesktopHome.scss';
-import {PickyButtonXL} from "../components/PickyButton/PickyButton";
+import './FlexHome.scss';
+import {
+    PickyButtonFlex, PickyButtonXL
+} from "../components/PickyButton/PickyButton";
 import RegisterModal from "../register_wizard/RegisterModal";
 import {useState} from "react";
 import page1 from '../Home01.png'
@@ -9,10 +11,12 @@ import page4 from '../Home04.png'
 import page5 from '../Home05.png'
 import page6 from '../Home06.png'
 import page7 from '../Home07.png'
+import useWindowDimensions from "../services/useWindowDimensions.hook";
 console.log(page1, page2, page3, page4, page5, page6, page7);
 
-function DesktopHome() {
+function FlexHome() {
     const [registerModalOpen, setRegisterModalOpen] = useState(false);
+    const {scale} = useWindowDimensions();
 
     async function toRegister() {
         setRegisterModalOpen(true)
@@ -21,7 +25,7 @@ function DesktopHome() {
         setRegisterModalOpen(false);
     }
     return(
-        <div className="picky-home">
+        <div className="picky-home-flex">
             <RegisterModal open={registerModalOpen} onClose={closeRegisterModal}/>
             <div className="font-test-wrapper">
                 {/*<span className="font-test demasiado">Demasiado</span>*/}
@@ -34,7 +38,12 @@ function DesktopHome() {
             <div className="tile tile-white">
                 <div className="tile-content page1">
                     <div className="register-button-positioner">
-                        <PickyButtonXL variant="contained" pickycolor="orange" onClick={toRegister}>Registrate</PickyButtonXL>
+                        {scale < 1
+                            ? <PickyButtonFlex variant="contained" pickycolor="orange"
+                                               onClick={toRegister}>Registrate</PickyButtonFlex>
+                            : <PickyButtonXL variant="contained" pickycolor="orange"
+                                             onClick={toRegister}>Registrate</PickyButtonXL>
+                        }
                     </div>
                 </div>
             </div>
@@ -45,7 +54,12 @@ function DesktopHome() {
             <div className="tile tile-orange">
                 <div className="tile-content page3">
                     <div className="register-button-positioner">
-                        <PickyButtonXL variant="contained" pickycolor="black" onClick={toRegister} >Registrate</PickyButtonXL>
+                        {scale < 1
+                            ? <PickyButtonFlex variant="contained" pickycolor="black"
+                                               onClick={toRegister}>Registrate</PickyButtonFlex>
+                            : <PickyButtonXL variant="contained" pickycolor="black"
+                                             onClick={toRegister}>Registrate</PickyButtonXL>
+                        }
                     </div>
                 </div>
             </div>
@@ -69,4 +83,4 @@ function DesktopHome() {
     )
 }
 
-export default DesktopHome;
+export default FlexHome;

@@ -9,93 +9,60 @@ const colors = {
     black: {
         def: '#000000',
         hover: '#222222'
+    },
+    white: {
+        def: '#EFEFEF',
+        hover: '#FAFAFA'
     }
 }
 const baseValues = {
-    borderRadius: 32,
-    padding1: 6,
-    padding2: 32,
-    letterSpacing: 2,
-    fontSize: 24
+    borderRadius: '18px',
+    padding: '6px 18px',
+}
+const xlValues = {
+    borderRadius: '32px',
+    padding: '6px 32px',
+    letterSpacing: '2px',
+    fontSize: '24px'
+}
+const flexValues = {
+    borderRadius: '2.45vw',
+    padding: '0.45vw 2.45vw',
+    letterSpacing: '0.1vw',
+    fontSize: '1.85vw'
 }
 
-export const PickyButtonBlack = styled(Button)(({ theme }) => ({
-    borderRadius: '18px',
-    padding: '6px 18px',
+export const PickyButton = styled(Button)(({ theme, pickycolor = 'black' }) => ({
+    borderRadius: baseValues.borderRadius,
+    padding: baseValues.padding,
     fontWeight: 400,
-    color: theme.palette.getContrastText(colors.black.def),
-    backgroundColor: colors.black.def,
-    '&:hover': {
-        backgroundColor: colors.black.hover,
-    },
-}));
-export const PickyButtonOrange = styled(Button)(({ theme }) => ({
-    borderRadius: '18px',
-    padding: '6px 18px',
-    fontWeight: 400,
-    color: theme.palette.getContrastText(colors.orange.def),
-    backgroundColor: colors.orange.def,
-    '&:hover': {
-        backgroundColor: colors.orange.hover,
-    },
-}));
-export const PickyButtonBlackXL = styled(Button)(({ theme }) => ({
-    borderRadius: '32px',
-    padding: '6px 32px',
-    fontWeight: 400,
-    letterSpacing:'2px',
-    fontSize:'24px',
-    color: theme.palette.getContrastText(colors.black.def),
-    backgroundColor: colors.black.def,
-    '&:hover': {
-        backgroundColor: colors.black.hover,
-    },
-}));
-export const PickyButtonOrangeXL = styled(Button)((props) => ({
-    borderRadius: '32px',
-    padding: '6px 32px',
-    fontWeight: 400,
-    letterSpacing:'2px',
-    fontSize:'24px',
-    color: props.theme.palette.getContrastText(colors.orange.def),
-    backgroundColor: colors.orange.def,
-    '&:hover': {
-        backgroundColor: colors.orange.hover,
-    },
-}));
-export const PickyButtonFlex = styled(Button)(({theme, pickycolor = 'black', scale = 1}) => ({
-    borderRadius: baseValues.borderRadius*scale,
-    padding: `${baseValues.padding1*scale}px ${baseValues.padding2*scale}px`,
-    fontWeight: 400,
-    letterSpacing: baseValues.letterSpacing*scale,
-    fontSize:baseValues.fontSize*scale,
     color: theme.palette.getContrastText(colors[pickycolor].def),
     backgroundColor: colors[pickycolor].def,
     '&:hover': {
         backgroundColor: colors[pickycolor].hover,
     },
 }));
-
-export const PickyButtonWhiteXL = styled(Button)(({ theme }) => ({
-    borderRadius: '32px',
-    padding: '6px 32px',
+export const PickyButtonFlex = styled(Button)(({theme, pickycolor = 'black'}) => ({
+    borderRadius: flexValues.borderRadius,
+    padding: flexValues.padding,
     fontWeight: 400,
-    letterSpacing:'2px',
-    fontSize:'24px',
-    color: theme.palette.getContrastText('#EFEFEF'),
-    backgroundColor: '#EFEFEF',
+    letterSpacing: flexValues.letterSpacing,
+    fontSize:flexValues.fontSize,
+    color: theme.palette.getContrastText(colors[pickycolor].def),
+    backgroundColor: colors[pickycolor].def,
     '&:hover': {
-        backgroundColor: '#FAFAFA',
+        backgroundColor: colors[pickycolor].hover,
     },
 }));
-export const PickyButtonTrans = styled(Button)(({ theme }) => ({
-    borderRadius: '32px',
-    padding: '6px 30px',
+export const PickyButtonXL = styled(Button)(({theme, pickycolor = 'black'}) => ({
+    borderRadius: xlValues.borderRadius,
+    padding: xlValues.padding,
     fontWeight: 400,
-    fontSize:'24px',
-    color: theme.palette.getContrastText('#000000'),
-    backgroundColor: 'transparent',
+    letterSpacing: xlValues.letterSpacing,
+    fontSize:xlValues.fontSize,
+    color: theme.palette.getContrastText(colors[pickycolor].def),
+    backgroundColor: colors[pickycolor].def,
     '&:hover': {
-        backgroundColor: '#222222',
+        backgroundColor: colors[pickycolor].hover,
     },
 }));

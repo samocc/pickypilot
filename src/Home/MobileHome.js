@@ -1,5 +1,5 @@
 import './MobileHome.scss';
-import {PickyButtonBlackXL, PickyButtonOrangeXL} from "../components/PickyButton/PickyButton";
+import {PickyButtonXL} from "../components/PickyButton/PickyButton";
 import RegisterModal from "../register_wizard/RegisterModal";
 import {useState} from "react";
 import page1 from '../Mobile01.png'
@@ -22,8 +22,7 @@ function MobileHome() {
             <div className="tile tile-white">
                 <div className="tile-content page1">
                     <div className="register-button-positioner">
-                        <PickyButtonOrangeXL variant="contained" onClick={toRegister} size="large">Registrate</PickyButtonOrangeXL>
-                        {/*<PickyButtonFlex variant="contained" scale={scale} pickycolor="orange" onClick={toRegister} size="large">Registrate</PickyButtonFlex>*/}
+                        <PickyButtonXL pickycolor="orange" variant="contained" onClick={toRegister} >Registrate</PickyButtonXL>
                     </div>
                 </div>
             </div>
@@ -34,8 +33,7 @@ function MobileHome() {
             <div className="tile tile-orange">
                 <div className="tile-content page3">
                     <div className="register-button-positioner">
-                        <PickyButtonBlackXL variant="contained" onClick={toRegister} size="large">Registrate</PickyButtonBlackXL>
-                        {/*<PickyButtonFlex variant="contained" scale={scale} pickycolor="black" onClick={toRegister} size="large">Registrate</PickyButtonFlex>*/}
+                        <PickyButtonXL pickycolor="black" variant="contained" onClick={toRegister} >Registrate</PickyButtonXL>
                     </div>
                 </div>
             </div>
