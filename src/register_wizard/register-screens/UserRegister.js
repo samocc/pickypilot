@@ -30,10 +30,18 @@ function UserRegister(props) {
 
     async function registerUser() {
         if (!validateForm(formData)) return;
-        await API.graphql({ query: createRegistryMutation, variables: { input: formData } });
+        API.graphql({ query: createRegistryMutation, variables: { input: formData } })
+            .then(registerSuccess, registerError)
+    }
+
+    function registerSuccess() {
         onRegister(formData);
         setSuccessMessage('Registro exitoso: ' + formData.email);
         setFormData({...initialFormState, 'region': formData.region});
+    }
+
+    function registerError(e) {
+        console.log(e);
     }
 
     function validateForm(data) {

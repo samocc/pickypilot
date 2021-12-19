@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef} from "react";
 import './RegionSelector.scss'
 import {regions} from "../../services/DataConfig";
 import InputLabel from '@mui/material/InputLabel';
@@ -13,33 +13,21 @@ const ITEM_PADDING_TOP = 8;
 const MenuProps = {
     PaperProps: {
         style: {
-            maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+            maxHeight: ITEM_HEIGHT * 7.5 + ITEM_PADDING_TOP,
             width: 250,
         },
     },
 };
 
 function RegionSelector (props) {
-    const {value, onRegionChange, error, required} = props;
+    const {value, onRegionChange, error, required, autoscroll = false} = props;
+    const elemRef = useRef(null);
 
-    // return (
-    //     <Autocomplete
-    //         options={regions}
-    //         getOptionLabel={(option) => option.name}
-    //         disableClearable
-    //         onChange={onRegionChange}
-    //         renderInput={(params) => (
-    //             <TextField
-    //                 {...params}
-    //                 label="Estado de residencia"
-    //                 variant="standard"
-    //                 required={required}
-    //                 error={error.length > 0}
-    //                 helperText={error}
-    //             />
-    //         )}
-    //     />
-    // )
+    function onOpen(){
+        if(autoscroll) {
+            elemRef.current.scrollIntoView(true);
+        }
+    }
 
     return (
         <FormControl className="picky-region-selector" variant="standard" fullWidth error={error.length > 0} sx={{ }}>
@@ -52,6 +40,8 @@ function RegionSelector (props) {
                 onChange={onRegionChange}
                 required={required}
                 MenuProps={MenuProps}
+                ref={elemRef}
+                onOpen={onOpen}
             >
                 {regions.map(({code, name}) => (
                     <MenuItem key={code} value={name}>

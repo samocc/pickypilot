@@ -8,7 +8,7 @@ import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import {FoodSpecialities} from "../../services/DataConfig";
 import {Box, Chip, Dialog, DialogActions, DialogContent, DialogTitle, TextField} from "@mui/material";
-import {useState} from "react";
+import {useRef, useState} from "react";
 import Button from "@mui/material/Button";
 
 const ITEM_HEIGHT = 48;
@@ -16,17 +16,18 @@ const ITEM_PADDING_TOP = 8;
 const MenuProps = {
     PaperProps: {
         style: {
-            maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+            maxHeight: ITEM_HEIGHT * 7.5 + ITEM_PADDING_TOP,
             width: 250,
         },
     },
 };
 
 function EspSelector(props) {
-    const { value : model, onChange, max = null, label, enableCustomFields = false, chip = false} = props;
+    const { value : model, onChange, max = null, label, enableCustomFields = false, chip = false, autoscroll = false} = props;
     const [newField, setNewField] = useState('');
     const [open, setOpen] = useState(false);
     const [customFields, setCustomFields] = useState([]);
+    const elemRef = useRef(null);
 
     const handleChange = (event) => {
         const {target: { value }} = event;
@@ -69,6 +70,11 @@ function EspSelector(props) {
             </Box>
         );
     }
+    function onOpen(){
+        if(autoscroll) {
+            elemRef.current.scrollIntoView(true);
+        }
+    }
 
     return (
         <div>
@@ -80,9 +86,11 @@ function EspSelector(props) {
                     multiple
                     value={model}
                     onChange={handleChange}
-                    input={<OutlinedInput label={label} />}
+                    input={<OutlinedInput label={label}/>}
                     renderValue={getRenderer()}
                     MenuProps={MenuProps}
+                    ref={elemRef}
+                    onOpen={onOpen}
                 >
                     {FoodSpecialities.map((name) => (
                         <MenuItem key={name} value={name}>

@@ -37,10 +37,18 @@ function ChefRegister(props) {
 
     async function registerUser() {
         if (!validateForm(formData)) return;
-        await API.graphql({ query: createRegistryMutation, variables: { input: formData } });
+        API.graphql({ query: createRegistryMutation, variables: { input: formData } })
+            .then(registerSuccess, registerError)
+    }
+
+    function registerSuccess() {
         onRegister(formData);
         setSuccessMessage('Registro exitoso: ' + formData.email);
         setFormData({...initialFormState, 'region': formData.region});
+    }
+
+    function registerError(e) {
+        console.log(e);
     }
 
     function validateForm(data) {
@@ -104,6 +112,7 @@ function ChefRegister(props) {
                                         error={errorState.region}
                                         required={true}
                                         value={formData.region}
+                                        autoscroll={true}
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm>
@@ -119,6 +128,7 @@ function ChefRegister(props) {
                                         max={4}
                                         label="Especialidades culinarias (4 max)"
                                         enableCustomFields={true}
+                                        autoscroll={true}
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm="auto">
