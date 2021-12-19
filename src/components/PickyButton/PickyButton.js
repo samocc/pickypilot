@@ -33,10 +33,10 @@ const flexValues = {
     fontSize: '1.85vw'
 }
 const flexValuesMobile = {
-    borderRadius: '6.75vw',
-    padding: '1.25vw 6.75vw',
-    letterSpacing: '0.275vw',
-    fontSize: '5vw'
+    borderRadius: '8vw',
+    padding: '1.45vw 8vw',
+    letterSpacing: '0.325vw',
+    fontSize: '6vw'
 }
 
 export const PickyButton = styled(Button)(({ theme, pickycolor = 'black' }) => ({
