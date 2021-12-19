@@ -7,7 +7,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import {FoodSpecialities} from "../../services/DataConfig";
-import {Dialog, DialogActions, DialogContent, DialogTitle, TextField} from "@mui/material";
+import {Box, Chip, Dialog, DialogActions, DialogContent, DialogTitle, TextField} from "@mui/material";
 import {useState} from "react";
 import Button from "@mui/material/Button";
 
@@ -23,7 +23,7 @@ const MenuProps = {
 };
 
 function EspSelector(props) {
-    const { value : model, onChange, max = null, label, enableCustomFields = false} = props;
+    const { value : model, onChange, max = null, label, enableCustomFields = false, chip = false} = props;
     const [newField, setNewField] = useState('');
     const [open, setOpen] = useState(false);
     const [customFields, setCustomFields] = useState([]);
@@ -33,10 +33,6 @@ function EspSelector(props) {
         const newModel = typeof value === 'string' ? value.split(',') : value;
         if(newModel.indexOf('picky-add-other-unique-key') >= 0) return;
         if(max && newModel.length > max) return;
-        // setSelectedFields(
-        //     // On autofill we get a the stringified value.
-        //     newModel
-        // );
         onChange(newModel);
     };
 
@@ -54,6 +50,26 @@ function EspSelector(props) {
         setNewField('');
     }
 
+    function getRenderer() {
+        if(chip) {
+            return chipRenderer;
+        }
+        return comaRenderer
+    }
+
+    function comaRenderer(selected) {
+        return selected.join(', ');
+    }
+    function chipRenderer(selected) {
+        return (
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                {selected.map((value) => (
+                    <Chip key={value} label={value} />
+                ))}
+            </Box>
+        );
+    }
+
     return (
         <div>
             <FormControl sx={{ }} fullWidth>
@@ -65,7 +81,7 @@ function EspSelector(props) {
                     value={model}
                     onChange={handleChange}
                     input={<OutlinedInput label={label} />}
-                    renderValue={(selected) => selected.join(', ')}
+                    renderValue={getRenderer()}
                     MenuProps={MenuProps}
                 >
                     {FoodSpecialities.map((name) => (
