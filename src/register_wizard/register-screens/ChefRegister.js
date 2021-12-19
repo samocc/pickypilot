@@ -33,7 +33,7 @@ function ChefRegister(props) {
     const [formData, setFormData] = useState(initialFormState);
     const [successMessage, setSuccessMessage] = useState('');
     const [errorState, setErrorState] = useState(initialErrorState);
-    const [selectedRegions, setSelectedRegions] = useState([]);
+    const [selectedEsp, setSelectedEsp] = useState([]);
 
     async function registerUser() {
         if (!validateForm(formData)) return;
@@ -67,8 +67,8 @@ function ChefRegister(props) {
         clearErrorField('email');
     }
 
-    async function onRegionChange (e, nv) {
-        setFormData({ ...formData, 'region': nv.name})
+    async function onRegionChange (e) {
+        setFormData({ ...formData, 'region': e.target.value})
         clearErrorField('region');
     }
 
@@ -103,6 +103,7 @@ function ChefRegister(props) {
                                         onRegionChange={onRegionChange}
                                         error={errorState.region}
                                         required={true}
+                                        value={formData.region}
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm>
@@ -113,8 +114,8 @@ function ChefRegister(props) {
                                     {/*    value={formData.esp}*/}
                                     {/*/>*/}
                                     <EspSelector
-                                        value={selectedRegions}
-                                        onChange={(nv) => setSelectedRegions(nv)}
+                                        value={selectedEsp}
+                                        onChange={(nv) => setSelectedEsp(nv)}
                                         max={4}
                                         label="Especialidades culinarias (4 max)"
                                         enableCustomFields={true}

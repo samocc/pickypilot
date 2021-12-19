@@ -60,8 +60,8 @@ function UserRegister(props) {
         clearErrorField('email');
     }
 
-    async function onRegionChange (e, nv) {
-        setFormData({ ...formData, 'region': nv.name})
+    async function onRegionChange (e) {
+        setFormData({ ...formData, 'region': e.target.value})
         clearErrorField('region');
     }
 
@@ -86,7 +86,7 @@ function UserRegister(props) {
                                 aoiefjwsef ofiaehfn foaifhiae ofiaej
                             </p>
                         </div>
-                        <Grid container spacing={2}>
+                        <Grid container rowSpacing={3} columnSpacing={2}>
                             <Grid item xs={12} sm={6}>
                                 <TextField
                                     fullWidth
@@ -104,6 +104,7 @@ function UserRegister(props) {
                                     onRegionChange={onRegionChange}
                                     error={errorState.region}
                                     required={true}
+                                    value={formData.region}
                                 />
                             </Grid>
                         </Grid>
