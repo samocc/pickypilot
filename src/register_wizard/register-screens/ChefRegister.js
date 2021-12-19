@@ -4,12 +4,13 @@ import '@aws-amplify/ui-react/styles.css';
 import {API} from "aws-amplify";
 import {createRegistry as createRegistryMutation} from "../../graphql/mutations";
 import Button from '@mui/material/Button';
-import {Autocomplete, TextField} from "@mui/material";
-import {estados} from "../../regionselector/estados";
+import {TextField} from "@mui/material";
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import SuccessPanel from "../sucess-panel/SuccessPanel";
 import Grid from '@mui/material/Grid';
+import EspSelector from "../../components/esp-selector/EspSelector";
+import RegionSelector from "../../components/region-selector/RegionSelector";
 
 const initialFormState = {
     email: '',
@@ -27,16 +28,12 @@ const initialErrorState = {
     portfolio: ''
 }
 
-const defaultProps = {
-    options: estados,
-    getOptionLabel: (option) => option.name,
-};
-
 function ChefRegister(props) {
     const {onRegister} = props;
     const [formData, setFormData] = useState(initialFormState);
     const [successMessage, setSuccessMessage] = useState('');
     const [errorState, setErrorState] = useState(initialErrorState);
+    const [selectedRegions, setSelectedRegions] = useState([]);
 
     async function registerUser() {
         if (!validateForm(formData)) return;
@@ -88,7 +85,7 @@ function ChefRegister(props) {
                     {successMessage.length ? (
                             <SuccessPanel message={successMessage}/>
                         ) :
-                        <Grid container spacing={2}>
+                        <Grid container rowSpacing={3} columnSpacing={2}>
                                 <Grid item xs={12} sm={6}>
                                     <TextField
                                         fullWidth
@@ -102,28 +99,25 @@ function ChefRegister(props) {
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
-                                    <Autocomplete
-                                        {...defaultProps}
-                                        disableClearable
-                                        onChange={onRegionChange}
-                                        renderInput={(params) => (
-                                            <TextField
-                                                {...params}
-                                                label="Estado de residencia"
-                                                variant="standard"
-                                                required={true}
-                                                error={errorState.region.length > 0}
-                                                helperText={errorState.region}
-                                            />
-                                        )}
+                                    <RegionSelector
+                                        onRegionChange={onRegionChange}
+                                        error={errorState.region}
+                                        required={true}
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm>
-                                    <TextField
-                                        fullWidth
-                                        onChange={e => setFormData({ ...formData, 'esp': e.target.value})}
-                                        label="Especialidad"
-                                        value={formData.esp}
+                                    {/*<TextField*/}
+                                    {/*    fullWidth*/}
+                                    {/*    onChange={e => setFormData({ ...formData, 'esp': e.target.value})}*/}
+                                    {/*    label="Especialidad"*/}
+                                    {/*    value={formData.esp}*/}
+                                    {/*/>*/}
+                                    <EspSelector
+                                        value={selectedRegions}
+                                        onChange={(nv) => setSelectedRegions(nv)}
+                                        max={4}
+                                        label="Especialidades culinarias (4 max)"
+                                        enableCustomFields={true}
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm="auto">

@@ -4,20 +4,15 @@ import '@aws-amplify/ui-react/styles.css';
 import {API} from "aws-amplify";
 import {createRegistry as createRegistryMutation} from "../../graphql/mutations";
 import Button from '@mui/material/Button';
-import {Autocomplete, TextField} from "@mui/material";
-import {estados} from "../../regionselector/estados";
 import SuccessPanel from "../sucess-panel/SuccessPanel";
 import Grid from "@mui/material/Grid";
+import RegionSelector from "../../components/region-selector/RegionSelector";
+import {TextField} from "@mui/material";
 
 const initialFormState = {
     email: '',
     region: ''
 }
-
-const defaultProps = {
-    options: estados,
-    getOptionLabel: (option) => option.name,
-};
 
 const initialErrorState = {
     email: '',
@@ -105,20 +100,10 @@ function UserRegister(props) {
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
-                                <Autocomplete
-                                    {...defaultProps}
-                                    disableClearable
-                                    onChange={onRegionChange}
-                                    renderInput={(params) => (
-                                        <TextField
-                                            {...params}
-                                            label="Estado de residencia"
-                                            variant="standard"
-                                            required={true}
-                                            error={errorState.region.length > 0}
-                                            helperText={errorState.region}
-                                        />
-                                    )}
+                                <RegionSelector
+                                    onRegionChange={onRegionChange}
+                                    error={errorState.region}
+                                    required={true}
                                 />
                             </Grid>
                         </Grid>
