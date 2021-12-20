@@ -4,10 +4,11 @@ import '@aws-amplify/ui-react/styles.css';
 import {API} from "aws-amplify";
 import {createRegistry as createRegistryMutation} from "../../graphql/mutations";
 import Button from '@mui/material/Button';
+import LoadingButton from '@mui/lab/LoadingButton';
 import {TextField} from "@mui/material";
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import SuccessPanel from "../sucess-panel/SuccessPanel";
+import AddTaskIcon from '@mui/icons-material/AddTask';
 import Grid from '@mui/material/Grid';
 import EspSelector from "../../components/esp-selector/EspSelector";
 import RegionSelector from "../../components/region-selector/RegionSelector";
@@ -31,19 +32,19 @@ const initialErrorState = {
 function ChefRegister(props) {
     const {onRegister} = props;
     const [formData, setFormData] = useState(initialFormState);
-    const [successMessage, setSuccessMessage] = useState('');
     const [errorState, setErrorState] = useState(initialErrorState);
+    const [isLoading, setIsLoading] = useState(false);
 
     async function registerUser() {
         if (!validateForm(formData)) return;
+        setIsLoading(true);
         API.graphql({ query: createRegistryMutation, variables: { input: formData } })
             .then(registerSuccess, registerError)
     }
 
     function registerSuccess() {
+        setIsLoading(false);
         onRegister(formData);
-        setSuccessMessage('Registro exitoso: ' + formData.email);
-        setFormData({...initialFormState, 'region': formData.region});
     }
 
     function registerError(e) {
@@ -89,10 +90,7 @@ function ChefRegister(props) {
             <div className="rs-header">Registrar como proveedor</div>
             <div className="rs-body">
                 <div className="rs-form">
-                    {successMessage.length ? (
-                            <SuccessPanel message={successMessage}/>
-                        ) :
-                        <Grid container rowSpacing={3} columnSpacing={2}>
+                    <Grid container rowSpacing={3} columnSpacing={2}>
                                 <Grid item xs={12} sm={6}>
                                     <TextField
                                         fullWidth
@@ -167,16 +165,28 @@ function ChefRegister(props) {
                                     />
                                 </Grid>
                             </Grid>
-                    }
                 </div>
             </div>
             <div className="rs-footer">
                 <div className="register-button">
-                    <Button
-                        variant="contained"
-                        onClick={registerUser}
-                        disabled={successMessage.length > 0 }
-                    >Registrar</Button>
+                    {isLoading ?
+                        <LoadingButton
+                            variant="contained"
+                            onClick={registerUser}
+                            loading={true}
+                            startIcon={<AddTaskIcon/>}
+                            loadingPosition="start"
+                        >
+                            Registrar
+                        </LoadingButton>
+                        :
+                        <Button
+                            variant="contained"
+                            onClick={registerUser}
+                        >
+                            Registrar
+                        </Button>
+                    }
                 </div>
             </div>
         </div>

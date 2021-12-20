@@ -12,11 +12,18 @@ import CheckIcon from "@mui/icons-material/Check";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {listRegistries, listUserRegistries} from "../graphql/queries";
 import useWindowDimensions from "../services/useWindowDimensions.hook";
+import RegSuccess from "./register-screens/RegSuccess";
+import {ChefSuccessChoro, UserSuccessChoro} from "../services/DataConfig";
 
 function PickyRegister() {
     const [registry, setRegistry] = useState([]);
     const [userRegistry, setUserRegistry] = useState([]);
     const [selectionScreen, setSelectionScreen] = useState(0);
+    const [regSuccessState, setRegSuccessState] = useState({
+        title: '',
+        message: '',
+        choro: ''
+    });
     const {isMobile} = useWindowDimensions();
 
     useEffect(() => {
@@ -33,10 +40,24 @@ function PickyRegister() {
         setUserRegistry(apiData.data.listUserRegistries.items);
     }
     function onUserRegister(added) {
+        const successState = {
+            title: 'Registrar como usuario',
+            message: `Registro exitoso: ${added.email}`,
+            choro: UserSuccessChoro
+        }
+        setRegSuccessState(successState);
         setUserRegistry([ ...userRegistry, added ]);
+        setSelectionScreen(3);
     }
     function onRegister(added) {
+        const successState = {
+            title: 'Registrar como proveedor',
+            message: `Registro exitoso: ${added.email}`,
+            choro: ChefSuccessChoro
+        }
+        setRegSuccessState(successState);
         setRegistry([ ...registry, added ]);
+        setSelectionScreen(3);
     }
     async function showSelectionScreen () {
         setSelectionScreen(0);
@@ -72,6 +93,7 @@ function PickyRegister() {
                 {selectionScreen === 0 ? <RegTypeSelector selectUser={selectUser} selectChef={selectChef} /> : null}
                 {selectionScreen === 1 ? <div className="picky-register-padded"><UserRegister onRegister={onUserRegister}/></div> : null}
                 {selectionScreen === 2 ? <div className="picky-register-padded"><ChefRegister onRegister={onRegister}/></div> : null}
+                {selectionScreen === 3 ? <div className="picky-register-padded"><RegSuccess {...regSuccessState}/></div> : null}
             </div>
             <div className="registry-list">
                 {

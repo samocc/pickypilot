@@ -90,3 +90,25 @@ export const regions = [
     { name: 'Yucatán', code: 'YN' },
     { name: 'Zacatecas', code: 'ZS' }
 ];
+
+export const UserSuccessChoro = 'Choro choro oadijaiedaoijifa oiafjae oifjeai foaeij\n' +
+    '                    djaeifja oaijdfiae foaeijfea oaijfiae ofijaeif foaiejfea foeiajf\n' +
+    '                    Choro choro oadijaiedaoijifa oiafjae oifjeai foaeij\n' +
+    '                    djaeifja oaijdfiae foaeijfea oaijfiae ofijaeif foaiejfea foeiajf\n' +
+    '                    Choro choro oadijaiedaoijifa oiafjae oifjeai foaeij\n' +
+    '                    djaeifja oaijdfiae foaeijfea oaijfiae ofijaeif foaiejfea foeiajf\n' +
+    '                    Choro choro oadijaiedaoijifa oiafjae oifjeai foaeij\n' +
+    '                    djaeifja oaijdfiae foaeijfea oaijfiae ofijaeif foaiejfea foeiajf\n' +
+    '                    Choro choro oadijaiedaoijifa oiafjae oifjeai foaeij\n' +
+    '                    djaeifja oaijdfiae foaeijfea oaijfiae ofijaeif foaiejfea foeiajf'
+
+export const ChefSuccessChoro = 'Chef choro oadijaiedaoijifa oiafjae oifjeai foaeij\n' +
+    '                    djaeifja oaijdfiae foaeijfea oaijfiae ofijaeif foaiejfea foeiajf\n' +
+    '                    Choro choro oadijaiedaoijifa oiafjae oifjeai foaeij\n' +
+    '                    djaeifja oaijdfiae foaeijfea oaijfiae ofijaeif foaiejfea foeiajf\n' +
+    '                    Choro choro oadijaiedaoijifa oiafjae oifjeai foaeij\n' +
+    '                    djaeifja oaijdfiae foaeijfea oaijfiae ofijaeif foaiejfea foeiajf\n' +
+    '                    Choro choro oadijaiedaoijifa oiafjae oifjeai foaeij\n' +
+    '                    djaeifja oaijdfiae foaeijfea oaijfiae ofijaeif foaiejfea foeiajf\n' +
+    '                    Choro choro oadijaiedaoijifa oiafjae oifjeai foaeij\n' +
+    '                    djaeifja oaijdfiae foaeijfea oaijfiae ofijaeif foaiejfea foeiajf'
