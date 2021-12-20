@@ -15,7 +15,7 @@ import RegionSelector from "../../components/region-selector/RegionSelector";
 const initialFormState = {
     email: '',
     region: '',
-    esp: '',
+    esp: [],
     desc: '',
     portfolio: ''
 }
@@ -23,7 +23,7 @@ const initialFormState = {
 const initialErrorState = {
     email: '',
     region: '',
-    esp: '',
+    esp: [],
     desc: '',
     portfolio: ''
 }
@@ -33,7 +33,6 @@ function ChefRegister(props) {
     const [formData, setFormData] = useState(initialFormState);
     const [successMessage, setSuccessMessage] = useState('');
     const [errorState, setErrorState] = useState(initialErrorState);
-    const [selectedEsp, setSelectedEsp] = useState([]);
 
     async function registerUser() {
         if (!validateForm(formData)) return;
@@ -116,15 +115,9 @@ function ChefRegister(props) {
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm>
-                                    {/*<TextField*/}
-                                    {/*    fullWidth*/}
-                                    {/*    onChange={e => setFormData({ ...formData, 'esp': e.target.value})}*/}
-                                    {/*    label="Especialidad"*/}
-                                    {/*    value={formData.esp}*/}
-                                    {/*/>*/}
                                     <EspSelector
-                                        value={selectedEsp}
-                                        onChange={(nv) => setSelectedEsp(nv)}
+                                        value={formData.esp}
+                                        onChange={(nv) => setFormData({ ...formData, 'esp': nv})}
                                         max={4}
                                         label="Especialidades culinarias (4 max)"
                                         enableCustomFields={true}

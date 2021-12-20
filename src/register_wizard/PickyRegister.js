@@ -65,7 +65,7 @@ function PickyRegister() {
                         <div className="email-list-item" key={reg.id || reg.email}>
                             <span className="email">{reg.email}</span>
                             <span className="ciudad">{reg.region}</span>
-                            {reg.esp ? <span className="data"> | Esp: {reg.esp}</span> : null}
+                            {reg.esp.length ? <span className="data"> | Esp: {reg.esp.length}</span> : null}
                             {reg.desc ? <span className="data"> | Desc: <CheckIcon fontSize="inherit" /></span> : null}
                             {reg.portfolio ? <span className="data"> | Portfolio: <CheckIcon fontSize="inherit" /></span> : null}
                             {reg.exp ? <span className="data"> | Exp: {reg.exp}</span> : null}

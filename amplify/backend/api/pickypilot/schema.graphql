@@ -7,7 +7,7 @@ type Registry @model {
   email: String!
   region: String
   exp: Int
-  esp: String
+  esp: [String]
   desc: String
   portfolio: String
 }
