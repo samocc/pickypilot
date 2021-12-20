@@ -2,24 +2,24 @@ import React, {useState} from 'react';
 import './RegisterScreen.scss'
 import '@aws-amplify/ui-react/styles.css';
 import {API} from "aws-amplify";
-import {createRegistry as createRegistryMutation} from "../../graphql/mutations";
+import {createUserRegistry as createRegistryMutation} from "../../graphql/mutations";
 import Button from '@mui/material/Button';
 import SuccessPanel from "../sucess-panel/SuccessPanel";
 import Grid from "@mui/material/Grid";
 import RegionSelector from "../../components/region-selector/RegionSelector";
 import {TextField} from "@mui/material";
+import CategoryPicker from "../../components/category-picker/CategoryPicker";
 
 const initialFormState = {
     email: '',
-    region: ''
+    region: '',
+    categories: []
 }
 
 const initialErrorState = {
     email: '',
     region: '',
-    esp: '',
-    desc: '',
-    portfolio: ''
+    categories: ''
 }
 
 function UserRegister(props) {
@@ -75,7 +75,7 @@ function UserRegister(props) {
 
     return (
         <div className="register-screen">
-            <div className="rs-header">User register</div>
+            <div className="rs-header">Registrar como usuario</div>
             <div className="rs-body">
                 <div className="rs-form">
                 {successMessage.length ? (
@@ -115,7 +115,14 @@ function UserRegister(props) {
                                     value={formData.region}
                                 />
                             </Grid>
+                            <Grid item xs={12}>
+                                <div className="form-instruction">Selecciona las experiencias Picky que despiertan tu interés:</div>
+                                <CategoryPicker value={formData.categories} onChange={(nv) => setFormData({ ...formData, 'categories': nv})}/>
+                            </Grid>
                         </Grid>
+                        {formData.categories.map((cat) => (
+                            <span key={cat}> {cat} </span>
+                        ))}
                     </div>
                 }
                 </div>

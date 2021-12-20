@@ -38,3 +38,34 @@ export const listRegistries = /* GraphQL */ `
     }
   }
 `;
+export const getUserRegistry = /* GraphQL */ `
+  query GetUserRegistry($id: ID!) {
+    getUserRegistry(id: $id) {
+      id
+      email
+      region
+      categories
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listUserRegistries = /* GraphQL */ `
+  query ListUserRegistries(
+    $filter: ModelUserRegistryFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUserRegistries(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        email
+        region
+        categories
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;

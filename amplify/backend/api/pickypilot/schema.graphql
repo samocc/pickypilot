@@ -11,3 +11,10 @@ type Registry @model {
   desc: String
   portfolio: String
 }
+
+type UserRegistry @model {
+  id: ID!
+  email: String!
+  region: String
+  categories: [String]
+}

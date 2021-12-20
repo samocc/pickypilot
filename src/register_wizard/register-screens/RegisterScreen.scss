@@ -66,12 +66,17 @@
   }
 
   .exp-label {
-    color: rgba(0, 0, 0, 0.54);
+    color: rgba(0, 0, 0, 0.58);
     font-weight: 600;
     font-size: 0.73rem;
   }
   .alert-wrapper {
     margin-top: 15px;
   }
-
+  .form-instruction {
+    color: rgba(0, 0, 0, 0.58);
+    font-weight: 500;
+    font-size: 16px;
+    margin: 20px 0 12px;
+  }
 }

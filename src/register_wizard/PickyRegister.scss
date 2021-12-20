@@ -65,3 +65,31 @@
         float: right;
     }
 }
+
+.user-registry-list {
+    position:fixed;
+    bottom:10px;
+    left: 10px;
+    .email-list-item {
+        margin-top: 4px;
+        padding: 12px;
+        background-color: lightpink;
+        border-radius: 4px;
+        //width: fit-content;
+        margin-left: auto;
+        margin-right: 0;
+    }
+    .email-list-item .email {
+        font-weight: bold;
+        margin-right: 12px;
+    }
+    .email-list-item .ciudad {
+        margin-right: 12px;
+    }
+    .email-list-item .data {
+
+    }
+    .email-list-item button {
+        float: right;
+    }
+}

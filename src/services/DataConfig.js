@@ -1,3 +1,12 @@
+export const PickyCategories = [
+    { name: 'Catering' },
+    { name: 'Home experience' },
+    { name: 'Mixology' },
+    { name: 'Meal surf' },
+    { name: 'Cooking classes' },
+    { name: 'Virtual experience' }
+]
+
 export const FoodSpecialities = [
     'Fusión',
     'Vegetariana',

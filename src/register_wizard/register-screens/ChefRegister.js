@@ -86,7 +86,7 @@ function ChefRegister(props) {
 
     return (
         <div className="register-screen">
-            <div className="rs-header">Chef register</div>
+            <div className="rs-header">Registrar como proveedor</div>
             <div className="rs-body">
                 <div className="rs-form">
                     {successMessage.length ? (

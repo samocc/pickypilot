@@ -55,3 +55,48 @@ export const deleteRegistry = /* GraphQL */ `
     }
   }
 `;
+export const createUserRegistry = /* GraphQL */ `
+  mutation CreateUserRegistry(
+    $input: CreateUserRegistryInput!
+    $condition: ModelUserRegistryConditionInput
+  ) {
+    createUserRegistry(input: $input, condition: $condition) {
+      id
+      email
+      region
+      categories
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateUserRegistry = /* GraphQL */ `
+  mutation UpdateUserRegistry(
+    $input: UpdateUserRegistryInput!
+    $condition: ModelUserRegistryConditionInput
+  ) {
+    updateUserRegistry(input: $input, condition: $condition) {
+      id
+      email
+      region
+      categories
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteUserRegistry = /* GraphQL */ `
+  mutation DeleteUserRegistry(
+    $input: DeleteUserRegistryInput!
+    $condition: ModelUserRegistryConditionInput
+  ) {
+    deleteUserRegistry(input: $input, condition: $condition) {
+      id
+      email
+      region
+      categories
+      createdAt
+      updatedAt
+    }
+  }
+`;

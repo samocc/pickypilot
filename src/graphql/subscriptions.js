@@ -46,3 +46,39 @@ export const onDeleteRegistry = /* GraphQL */ `
     }
   }
 `;
+export const onCreateUserRegistry = /* GraphQL */ `
+  subscription OnCreateUserRegistry {
+    onCreateUserRegistry {
+      id
+      email
+      region
+      categories
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateUserRegistry = /* GraphQL */ `
+  subscription OnUpdateUserRegistry {
+    onUpdateUserRegistry {
+      id
+      email
+      region
+      categories
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteUserRegistry = /* GraphQL */ `
+  subscription OnDeleteUserRegistry {
+    onDeleteUserRegistry {
+      id
+      email
+      region
+      categories
+      createdAt
+      updatedAt
+    }
+  }
+`;
