@@ -20,7 +20,7 @@ const MenuProps = {
 };
 
 function RegionSelector (props) {
-    const {value, onRegionChange, error, required, autoscroll = false} = props;
+    const {value, onRegionChange, error, required, autoscroll = false, label = "Selecciona región"} = props;
     const elemRef = useRef(null);
 
     function onOpen(){
@@ -30,13 +30,12 @@ function RegionSelector (props) {
     }
 
     return (
-        <FormControl className="picky-region-selector" variant="standard" fullWidth error={error.length > 0} sx={{ }}>
-            <InputLabel id="region-select-label">Estado de residencia</InputLabel>
+        <FormControl className="picky-region-selector" variant="standard" fullWidth error={error.length > 0} sx={{ }} required={required}>
+            <InputLabel id="region-select-label">{label}</InputLabel>
             <Select
                 labelId="region-select-label"
                 id="region-select"
                 value={value}
-                label="Estado de residencia"
                 onChange={onRegionChange}
                 required={required}
                 MenuProps={MenuProps}

@@ -113,6 +113,7 @@ function UserRegister(props) {
                                     error={errorState.region}
                                     required={true}
                                     value={formData.region}
+                                    label="Estado de residencia"
                                 />
                             </Grid>
                             <Grid item xs={12}>
