@@ -111,7 +111,6 @@ function ChefRegister(props) {
                                         error={errorState.region}
                                         required={true}
                                         value={formData.region}
-                                        autoscroll={true}
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm>
