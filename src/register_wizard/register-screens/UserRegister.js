@@ -120,9 +120,6 @@ function UserRegister(props) {
                                 <CategoryPicker value={formData.categories} onChange={(nv) => setFormData({ ...formData, 'categories': nv})}/>
                             </Grid>
                         </Grid>
-                        {formData.categories.map((cat) => (
-                            <span key={cat}> {cat} </span>
-                        ))}
                     </div>
                 }
                 </div>

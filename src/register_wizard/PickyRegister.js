@@ -90,7 +90,7 @@ function PickyRegister() {
                     ))
                 }
             </div>
-            <div className="user-registry-list">
+            <div className="registry-list left-aligned">
                 {
                     userRegistry.map((reg, index) => (
                         <div className="email-list-item" key={index + '-user-reg'}>
