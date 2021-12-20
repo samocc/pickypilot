@@ -49,6 +49,7 @@ function EspSelector(props) {
         }
         setOpen(false);
         setNewField('');
+        onOpen();
     }
 
     function getRenderer() {
@@ -123,8 +124,8 @@ function EspSelector(props) {
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={e => handleClose(false)}>Cancel</Button>
-                    <Button onClick={e => handleClose(true)}>Ok</Button>
+                    <Button onClick={() => handleClose(false)}>Cancel</Button>
+                    <Button onClick={() => handleClose(true)}>Ok</Button>
                 </DialogActions>
             </Dialog>
         </div>
