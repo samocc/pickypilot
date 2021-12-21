@@ -14,10 +14,10 @@ console.log(page1, page2, page3, page4, page5, page6, page7);
 function DesktopFlex() {
     const [registerModalOpen, setRegisterModalOpen] = useState(false);
 
-    async function toRegister() {
+    function toRegister() {
         setRegisterModalOpen(true)
     }
-    async function closeRegisterModal() {
+    function closeRegisterModal() {
         setRegisterModalOpen(false);
     }
     return(

@@ -27,7 +27,7 @@ function CategoryPicker(props) {
         });
     }
     
-    async function selectCat(index) {
+    function selectCat(index) {
         setModel(prevState => {
             const newState = [...prevState];
             newState[index].selected = !prevState[index].selected;

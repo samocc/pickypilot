@@ -10,10 +10,10 @@ console.log(page1, page2, page3);
 function MobileFlex() {
     const [registerModalOpen, setRegisterModalOpen] = useState(false);
 
-    async function toRegister() {
+    function toRegister() {
         setRegisterModalOpen(true)
     }
-    async function closeRegisterModal() {
+    function closeRegisterModal() {
         setRegisterModalOpen(false);
     }
     return(

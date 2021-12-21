@@ -62,6 +62,7 @@ function EspSelector(props) {
     function comaRenderer(selected) {
         return selected.join(', ');
     }
+
     function chipRenderer(selected) {
         return (
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
@@ -71,6 +72,7 @@ function EspSelector(props) {
             </Box>
         );
     }
+
     function onOpen(){
         if(autoscroll) {
             elemRef.current.scrollIntoView(true);

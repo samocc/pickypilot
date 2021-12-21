@@ -7,7 +7,7 @@ import {IconButton} from "@mui/material";
 function RegisterModal(props) {
     const { open, onClose } = props;
 
-    async function handleClose(){
+    function handleClose(){
         onClose();
     }
 

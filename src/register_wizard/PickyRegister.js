@@ -59,13 +59,13 @@ function PickyRegister() {
         setRegistry([ ...registry, added ]);
         setSelectionScreen(3);
     }
-    async function showSelectionScreen () {
+    function showSelectionScreen () {
         setSelectionScreen(0);
     }
-    async function selectUser() {
+    function selectUser() {
         setSelectionScreen(1);
     }
-    async function selectChef() {
+    function selectChef() {
         setSelectionScreen(2);
     }
 

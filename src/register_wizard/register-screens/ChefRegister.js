@@ -70,17 +70,17 @@ function ChefRegister(props) {
         setErrorState(prevState => {return {...prevState, [fieldName]: false}});
     }
 
-    async function onEmailChange (e) {
+    function onEmailChange (e) {
         setFormData({ ...formData, 'email': e.target.value});
         clearErrorField('email');
     }
 
-    async function onRegionChange (e) {
+    function onRegionChange (e) {
         setFormData({ ...formData, 'region': e.target.value})
         clearErrorField('region');
     }
 
-    async function onExpChange (e, nv) {
+    function onExpChange (e, nv) {
         setFormData({ ...formData, 'exp': nv})
         clearErrorField('exp');
     }
