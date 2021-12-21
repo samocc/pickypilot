@@ -40,8 +40,9 @@ function UserRegister(props) {
         onRegister(resp.data.createUserRegistry);
     }
 
-    function registerError(e) {
-        console.log(e);
+    function registerError({errors}) {
+        setIsLoading(false);
+        console.log(errors);
     }
 
     function validateForm(data) {

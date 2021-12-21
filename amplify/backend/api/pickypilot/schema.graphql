@@ -4,7 +4,7 @@ input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONL
 
 type Registry @model {
   id: ID!
-  email: String!
+  email: AWSEmail!
   region: String
   exp: Int
   esp: [String]
@@ -14,7 +14,7 @@ type Registry @model {
 
 type UserRegistry @model {
   id: ID!
-  email: String!
+  email: AWSEmail!
   region: String
   categories: [String]
 }
