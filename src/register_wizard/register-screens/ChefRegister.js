@@ -47,8 +47,9 @@ function ChefRegister(props) {
         onRegister(resp.data.createRegistry);
     }
 
-    function registerError(e) {
-        console.log(e);
+    function registerError({errors}) {
+        setIsLoading(false);
+        console.log(errors);
     }
 
     function validateForm(data) {
