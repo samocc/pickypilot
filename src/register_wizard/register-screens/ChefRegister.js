@@ -42,9 +42,9 @@ function ChefRegister(props) {
             .then(registerSuccess, registerError)
     }
 
-    function registerSuccess() {
+    function registerSuccess(resp) {
         setIsLoading(false);
-        onRegister(formData);
+        onRegister(resp.data.createRegistry);
     }
 
     function registerError(e) {

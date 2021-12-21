@@ -97,8 +97,8 @@ function PickyRegister() {
             </div>
             <div className="registry-list">
                 {
-                    registry.map((reg, index) => (
-                        <div className="email-list-item" key={index + '-reg'}>
+                    registry.map((reg) => (
+                        <div className="email-list-item" key={reg.id + '-reg'}>
                             <span className="email">{reg.email}</span>
                             <span className="ciudad">{reg.region}</span>
                             {reg.esp.length ? <span className="data"> | Esp: {reg.esp.length}</span> : null}
@@ -114,8 +114,8 @@ function PickyRegister() {
             </div>
             <div className="registry-list left-aligned">
                 {
-                    userRegistry.map((reg, index) => (
-                        <div className="email-list-item" key={index + '-user-reg'}>
+                    userRegistry.map((reg) => (
+                        <div className="email-list-item" key={reg.id + '-user-reg'}>
                             <span className="email">{reg.email}</span>
                             <span className="ciudad">{reg.region}</span>
                             {reg.categories.length ? <span className="data"> | Cat: {reg.categories.length}</span> : null}

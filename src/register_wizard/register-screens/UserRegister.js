@@ -35,9 +35,9 @@ function UserRegister(props) {
             .then(registerSuccess, registerError)
     }
 
-    function registerSuccess() {
+    function registerSuccess(resp) {
         setIsLoading(false);
-        onRegister(formData);
+        onRegister(resp.data.createUserRegistry);
     }
 
     function registerError(e) {
