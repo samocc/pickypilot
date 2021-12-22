@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
 import './RegisterScreen.scss'
 import '@aws-amplify/ui-react/styles.css';
 import {API} from "aws-amplify";
@@ -31,12 +31,11 @@ const initialErrorState = {
 }
 
 function ChefRegister(props) {
-    const {onRegister} = props;
+    const {onSuccess, onError} = props;
     const [formData, setFormData] = useState(initialFormState);
     const [errorState, setErrorState] = useState(initialErrorState);
     const [isLoading, setIsLoading] = useState(false);
     const [regErrors, setRegErrors] = useState([]);
-    const topRef = useRef(null);
 
     async function registerUser() {
         setRegErrors([]);
@@ -48,13 +47,13 @@ function ChefRegister(props) {
 
     function registerSuccess(resp) {
         setIsLoading(false);
-        onRegister(resp.data.createRegistry);
+        onSuccess(resp.data.createRegistry);
     }
 
     function registerError({errors}) {
         setIsLoading(false);
         setRegErrors(errors);
-        topRef.current.scrollIntoView(true);
+        onError(errors);
     }
 
     function validateForm(data) {
@@ -97,7 +96,7 @@ function ChefRegister(props) {
 
     return (
         <div className="register-screen">
-            <div className="rs-header" ref={topRef}>Registrar como proveedor</div>
+            <div className="rs-header">Registrar como proveedor</div>
             <div className="rs-body">
                 <div className="rs-form">
                     <ErrorsList errors={regErrors} removeError={removeError}/>

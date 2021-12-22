@@ -1,7 +1,7 @@
 import './PickyRegister.scss'
 import Button from "@mui/material/Button";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {API} from "aws-amplify";
 import {deleteRegistry as deleteRegistryMutation, deleteUserRegistry as deleteUserRegistryMutation} from "../graphql/mutations";
 import {IconButton} from "@mui/material";
@@ -25,11 +25,16 @@ function PickyRegister() {
         choro: ''
     });
     const {isMobile} = useWindowDimensions();
+    const topRef = useRef(null);
 
     useEffect(() => {
         fetchRegistry();
         fetchUserRegistry();
     }, []);
+
+    useEffect(() => {
+        topRef.current.scrollIntoView(true);
+    }, [selectionScreen]);
 
     async function fetchRegistry() {
         const apiData = await API.graphql({ query: listRegistries });
@@ -39,7 +44,7 @@ function PickyRegister() {
         const apiData = await API.graphql({ query: listUserRegistries });
         setUserRegistry(apiData.data.listUserRegistries.items);
     }
-    function onUserRegister(added) {
+    function onUserRegisterSuccess(added) {
         const successState = {
             title: 'Registrar como usuario',
             message: `Registro exitoso: ${added.email}`,
@@ -49,7 +54,7 @@ function PickyRegister() {
         setUserRegistry([ ...userRegistry, added ]);
         setSelectionScreen(3);
     }
-    function onRegister(added) {
+    function onRegisterSuccess(added) {
         const successState = {
             title: 'Registrar como proveedor',
             message: `Registro exitoso: ${added.email}`,
@@ -58,6 +63,9 @@ function PickyRegister() {
         setRegSuccessState(successState);
         setRegistry([ ...registry, added ]);
         setSelectionScreen(3);
+    }
+    function onError() {
+        topRef.current.scrollIntoView(true);
     }
     function showSelectionScreen () {
         setSelectionScreen(0);
@@ -82,6 +90,7 @@ function PickyRegister() {
 
     return(
         <div className={isMobile ? "picky-register-wrapper mobile": "picky-register-wrapper"}>
+            <div className="top-ref-handle" ref={topRef}/>
             <div className="picky-register">
                 {selectionScreen === 0 ? null :
                     <div className="return-wrapper">
@@ -91,8 +100,8 @@ function PickyRegister() {
                     </div>
                 }
                 {selectionScreen === 0 ? <RegTypeSelector selectUser={selectUser} selectChef={selectChef} /> : null}
-                {selectionScreen === 1 ? <div className="picky-register-padded"><UserRegister onRegister={onUserRegister}/></div> : null}
-                {selectionScreen === 2 ? <div className="picky-register-padded"><ChefRegister onRegister={onRegister}/></div> : null}
+                {selectionScreen === 1 ? <div className="picky-register-padded"><UserRegister onSuccess={onUserRegisterSuccess} onError={onError}/></div>: null}
+                {selectionScreen === 2 ? <div className="picky-register-padded"><ChefRegister onSuccess={onRegisterSuccess} onError={onError}/></div> : null}
                 {selectionScreen === 3 ? <div className="picky-register-padded"><RegSuccess {...regSuccessState}/></div> : null}
             </div>
             <div className="registry-list">
