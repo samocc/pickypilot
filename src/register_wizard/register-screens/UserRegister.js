@@ -102,12 +102,11 @@ function UserRegister(props) {
                             Bla bla blaaa blabla bla blaaa bla ldijeaiof aifhaei oaeihfdae oiaeufhaeu ofihaef
                             POI9DJaidj CPOAJFDOAIE  dopaeijdiae doiaejd poidjae doaiejdeai oi
                             Bla bla blaaa blabla bla blaaa bla ldijeaiof aifhaei oaeihfdae oiaeufhaeu ofihaef
-                            aoiefjwsef ofiaehfn foaifhiae ofiaej
-                            Bla bla blaaa blabla bla blaaa bla ldijeaiof aifhaei oaeihfdae oiaeufhaeu ofihaef
-                            aoiefjwsef ofiaehfn foaifhiae ofiaej
+                            aoiefjwsef ofiaehfn foaifhiae ofiae
                         </p>
                     </div>
                     <div className="rs-section">
+                        <div className="form-instruction">Información personal</div>
                         <Grid container rowSpacing={3} columnSpacing={2}>
                             <Grid item xs={12} sm={8}>
                                 <TextField
@@ -129,8 +128,6 @@ function UserRegister(props) {
                                     onChange={(e) => setFormData({...formData, birth: toInt(e.target.value)})}
                                     label="Año de nacimiento"
                                     value={formData.birth}
-                                    error={errorState.email.length > 0}
-                                    helperText={errorState.email}
                                     SelectProps={{MenuProps: MenuProps}}
                                 >
                                     {BirthYears.map((option) => (
@@ -158,8 +155,6 @@ function UserRegister(props) {
                                     label="Género"
                                     variant="standard"
                                     value={formData.gender}
-                                    error={errorState.email.length > 0}
-                                    helperText={errorState.email}
                                 >
                                     {Genders.map((option) => (
                                         <MenuItem key={option} value={option}>

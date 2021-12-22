@@ -3,7 +3,6 @@ import './RegisterScreen.scss'
 import '@aws-amplify/ui-react/styles.css';
 import {API} from "aws-amplify";
 import {createRegistry as createRegistryMutation} from "../../graphql/mutations";
-import Button from '@mui/material/Button';
 import LoadingButton from '@mui/lab/LoadingButton';
 import {TextField} from "@mui/material";
 import ToggleButton from '@mui/material/ToggleButton';
@@ -108,6 +107,7 @@ function ChefRegister(props) {
                 <div className="rs-form">
                     <ErrorsList errors={regErrors} removeError={removeError}/>
                     <div className="rs-section">
+                        <div className="form-instruction">Información personal</div>
                         <Grid container rowSpacing={3} columnSpacing={2}>
                             <Grid item xs={12} sm={8}>
                                 <TextField
@@ -129,8 +129,6 @@ function ChefRegister(props) {
                                     onChange={(e) => setFormData({...formData, birth: toInt(e.target.value)})}
                                     label="Año de nacimiento"
                                     value={formData.birth}
-                                    error={errorState.email.length > 0}
-                                    helperText={errorState.email}
                                     SelectProps={{MenuProps: MenuProps}}
                                 >
                                     {BirthYears.map((option) => (
@@ -158,8 +156,6 @@ function ChefRegister(props) {
                                     label="Género"
                                     variant="standard"
                                     value={formData.gender}
-                                    error={errorState.email.length > 0}
-                                    helperText={errorState.email}
                                 >
                                     {Genders.map((option) => (
                                         <MenuItem key={option} value={option}>
@@ -282,24 +278,15 @@ function ChefRegister(props) {
             </div>
             <div className="rs-footer">
                 <div className="register-button">
-                    {isLoading ?
-                        <LoadingButton
-                            variant="contained"
-                            onClick={registerUser}
-                            loading={true}
-                            startIcon={<AddTaskIcon/>}
-                            loadingPosition="start"
-                        >
-                            Registrar
-                        </LoadingButton>
-                        :
-                        <Button
-                            variant="contained"
-                            onClick={registerUser}
-                        >
-                            Registrar
-                        </Button>
-                    }
+                    <LoadingButton
+                        variant="contained"
+                        onClick={registerUser}
+                        loading={isLoading}
+                        startIcon={<AddTaskIcon/>}
+                        loadingPosition="start"
+                    >
+                        Registrar
+                    </LoadingButton>
                 </div>
             </div>
         </div>
