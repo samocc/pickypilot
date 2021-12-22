@@ -13,6 +13,8 @@ import Grid from '@mui/material/Grid';
 import EspSelector from "../../components/esp-selector/EspSelector";
 import RegionSelector from "../../components/region-selector/RegionSelector";
 import ErrorsList from "../../components/errors-list/ErrorsList";
+import toInt from "validator/es/lib/toInt";
+import MenuItem from "@mui/material/MenuItem";
 
 const initialFormState = {
     email: '',
@@ -30,12 +32,19 @@ const initialErrorState = {
     portfolio: ''
 }
 
+const Genders = ['Masculino', 'Femenino', 'Otro'];
+const BirthYears = ['2010', '2009', '2008', '2007', '2006', '2005', '2004'];
+
 function ChefRegister(props) {
     const {onSuccess, onError} = props;
     const [formData, setFormData] = useState(initialFormState);
     const [errorState, setErrorState] = useState(initialErrorState);
     const [isLoading, setIsLoading] = useState(false);
     const [regErrors, setRegErrors] = useState([]);
+    const [testFields, setTestFields] = useState({
+        gender: "",
+        born: 2010
+    })
 
     async function registerUser() {
         setRegErrors([]);
@@ -102,7 +111,7 @@ function ChefRegister(props) {
                     <ErrorsList errors={regErrors} removeError={removeError}/>
                     <div className="rs-section">
                         <Grid container rowSpacing={3} columnSpacing={2}>
-                            <Grid item xs={12} sm={6}>
+                            <Grid item xs={12} sm={8}>
                                 <TextField
                                     fullWidth
                                     variant="standard"
@@ -114,7 +123,25 @@ function ChefRegister(props) {
                                     helperText={errorState.email}
                                 />
                             </Grid>
-                            <Grid item xs={12} sm={6}>
+                            <Grid item xs={12} sm={4}>
+                                <TextField
+                                    fullWidth
+                                    select
+                                    variant="standard"
+                                    onChange={(e) => setTestFields({...testFields, born: toInt(e.target.value)})}
+                                    label="Año de nacimiento"
+                                    value={testFields.born}
+                                    error={errorState.email.length > 0}
+                                    helperText={errorState.email}
+                                >
+                                    {BirthYears.map((option) => (
+                                        <MenuItem key={option} value={option}>
+                                            {option}
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
+                            </Grid>
+                            <Grid item xs={12} sm={8}>
                                 <RegionSelector
                                     onRegionChange={onRegionChange}
                                     error={errorState.region}
@@ -123,6 +150,71 @@ function ChefRegister(props) {
                                     label="Estado de residencia"
                                 />
                             </Grid>
+                            <Grid item xs={12} sm={4}>
+                                <TextField
+                                    fullWidth
+                                    select
+                                    onChange={(e) => setTestFields({...testFields, gender: e.target.value})}
+                                    label="Género"
+                                    variant="standard"
+                                    value={testFields.gender}
+                                    error={errorState.email.length > 0}
+                                    helperText={errorState.email}
+                                >
+                                    {Genders.map((option) => (
+                                        <MenuItem key={option} value={option}>
+                                            {option}
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
+                            </Grid>
+                            {/*<Grid item xs={12} sm={4}>
+                                <TextField
+                                    fullWidth
+                                    select
+                                    variant="standard"
+                                    onChange={(e) => setTestFields({...testFields, born: toInt(e.target.value)})}
+                                    label="Año de nacimiento"
+                                    value={testFields.born}
+                                    error={errorState.email.length > 0}
+                                    helperText={errorState.email}
+                                >
+                                    {BirthYears.map((option) => (
+                                        <MenuItem key={option} value={option}>
+                                            {option}
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
+                            </Grid>*/}
+
+                            {/*<Grid item xs={12} sm={4}>*/}
+                            {/*    <div className="exp-label">*/}
+                            {/*        Género (opcional)*/}
+                            {/*    </div>*/}
+                            {/*    <ToggleButtonGroup*/}
+                            {/*        size="small"*/}
+                            {/*        value={testFields.gender}*/}
+                            {/*        exclusive*/}
+                            {/*        onChange={(e, nv) => setTestFields({...testFields, gender: nv}) }*/}
+                            {/*        aria-label="text alignment"*/}
+                            {/*    >*/}
+                            {/*        <ToggleButton value="Masculino">*/}
+                            {/*            Masculino*/}
+                            {/*        </ToggleButton>*/}
+                            {/*        <ToggleButton value="Femenino">*/}
+                            {/*            Femenino*/}
+                            {/*        </ToggleButton>*/}
+                            {/*        <ToggleButton value="Otro">*/}
+                            {/*            Otro*/}
+                            {/*        </ToggleButton>*/}
+                            {/*    </ToggleButtonGroup>*/}
+                            {/*</Grid>*/}
+
+                        </Grid>
+                    </div>
+
+                    <div className="rs-section extra-margin">
+                        <Grid container rowSpacing={3} columnSpacing={2}>
                             <Grid item xs={12} sm>
                                 <EspSelector
                                     value={formData.esp}
