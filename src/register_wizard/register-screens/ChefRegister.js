@@ -45,7 +45,10 @@ function ChefRegister(props) {
 
     async function registerUser() {
         setRegErrors([]);
-        if (!validateForm(formData)) return;
+        if (!validateForm(formData)) {
+            onError();
+            return;
+        }
         setIsLoading(true);
         API.graphql({ query: createRegistryMutation, variables: { input: formData } })
             .then(registerSuccess, registerError)
