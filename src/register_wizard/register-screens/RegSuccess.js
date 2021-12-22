@@ -10,17 +10,19 @@ function RegSuccess(props) {
             <div className="rs-header">{title}</div>
             <div className="rs-body">
                 <div className="rs-form">
-                    <div className="alert-wrapper">
+                    <div className="rs-section">
                         <Alert severity="success">
                             <span className="alert-content">
                                 {message}
                             </span>
                         </Alert>
                     </div>
-                    <div className="register-choro">
+                    <div className="rs-section">
                         <p>{choro}</p>
                     </div>
-                    <SocialMediaLinks message="Síguenos en nuestras redes sociales:" textSize={18} fontSize={60} separation={12}/>
+                    <div className="rs-section extra-margin">
+                        <SocialMediaLinks message="Síguenos en nuestras redes sociales:" textSize={18} fontSize={60} separation={12}/>
+                    </div>
                 </div>
             </div>
         </div>

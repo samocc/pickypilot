@@ -1,5 +1,4 @@
 import useWindowDimensions from "../services/useWindowDimensions.hook";
-// import MobileHome from "./MobileHome";
 import DesktopFlex from "./DesktopFlex";
 import MobileFlex from "./MobileFlex";
 

@@ -12,6 +12,7 @@ import AddTaskIcon from '@mui/icons-material/AddTask';
 import Grid from '@mui/material/Grid';
 import EspSelector from "../../components/esp-selector/EspSelector";
 import RegionSelector from "../../components/region-selector/RegionSelector";
+import RegErrors from "./RegErrors";
 
 const initialFormState = {
     email: '',
@@ -34,8 +35,10 @@ function ChefRegister(props) {
     const [formData, setFormData] = useState(initialFormState);
     const [errorState, setErrorState] = useState(initialErrorState);
     const [isLoading, setIsLoading] = useState(false);
+    const [regErrors, setRegErrors] = useState([]);
 
     async function registerUser() {
+        setRegErrors([]);
         if (!validateForm(formData)) return;
         setIsLoading(true);
         API.graphql({ query: createRegistryMutation, variables: { input: formData } })
@@ -49,7 +52,7 @@ function ChefRegister(props) {
 
     function registerError({errors}) {
         setIsLoading(false);
-        console.log(errors);
+        setRegErrors(errors);
     }
 
     function validateForm(data) {
@@ -86,86 +89,93 @@ function ChefRegister(props) {
         clearErrorField('exp');
     }
 
+    function removeError(index) {
+        setRegErrors(regErrors.filter((err, i) => i !== index));
+    }
+
     return (
         <div className="register-screen">
             <div className="rs-header">Registrar como proveedor</div>
             <div className="rs-body">
                 <div className="rs-form">
-                    <Grid container rowSpacing={3} columnSpacing={2}>
-                                <Grid item xs={12} sm={6}>
-                                    <TextField
-                                        fullWidth
-                                        variant="standard"
-                                        onChange={onEmailChange}
-                                        label="Email"
-                                        value={formData.email}
-                                        required={true}
-                                        error={errorState.email.length > 0}
-                                        helperText={errorState.email}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} sm={6}>
-                                    <RegionSelector
-                                        onRegionChange={onRegionChange}
-                                        error={errorState.region}
-                                        required={true}
-                                        value={formData.region}
-                                        label="Estado de residencia"
-                                    />
-                                </Grid>
-                                <Grid item xs={12} sm>
-                                    <EspSelector
-                                        value={formData.esp}
-                                        onChange={(nv) => setFormData({ ...formData, 'esp': nv})}
-                                        max={4}
-                                        label="Especialidades culinarias (4 max)"
-                                        enableCustomFields={true}
-                                        autoscroll={true}
-                                    />
-                                </Grid>
-                                <Grid item xs={12} sm="auto">
-                                    <div className="exp-label">
-                                        Nivel de experiencia
-                                    </div>
-                                    <ToggleButtonGroup
-                                        size="small"
-                                        value={formData.exp}
-                                        exclusive
-                                        onChange={onExpChange}
-                                        aria-label="text alignment"
-                                    >
-                                        <ToggleButton value={1}>
-                                            Aficionado
-                                        </ToggleButton>
-                                        <ToggleButton value={2}>
-                                            Experimentado
-                                        </ToggleButton>
-                                        <ToggleButton value={3}>
-                                            Experto
-                                        </ToggleButton>
-                                    </ToggleButtonGroup>
-                                </Grid>
-                                <Grid item xs={12} >
-                                    <TextField
-                                        fullWidth
-                                        label="Descripción"
-                                        multiline
-                                        rows={4}
-                                        value={formData.desc}
-                                        onChange={e => setFormData({ ...formData, 'desc': e.target.value})}
-                                        placeholder="Describe tu experiencia culinaria"
-                                    />
-                                </Grid>
-                                <Grid item xs={12} >
-                                    <TextField
-                                        fullWidth
-                                        label="Portfolio"
-                                        value={formData.portfolio}
-                                        onChange={e => setFormData({ ...formData, 'portfolio': e.target.value})}
-                                        placeholder="Ingresa un link donde se muestre tu trabajo (página web, red social, etc)"
-                                    />
-                                </Grid>
+                    <RegErrors errors={regErrors} removeError={removeError}/>
+                    <div className="rs-section">
+                        <Grid container rowSpacing={3} columnSpacing={2}>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    fullWidth
+                                    variant="standard"
+                                    onChange={onEmailChange}
+                                    label="Email"
+                                    value={formData.email}
+                                    required={true}
+                                    error={errorState.email.length > 0}
+                                    helperText={errorState.email}
+                                />
                             </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <RegionSelector
+                                    onRegionChange={onRegionChange}
+                                    error={errorState.region}
+                                    required={true}
+                                    value={formData.region}
+                                    label="Estado de residencia"
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm>
+                                <EspSelector
+                                    value={formData.esp}
+                                    onChange={(nv) => setFormData({ ...formData, 'esp': nv})}
+                                    max={4}
+                                    label="Especialidades culinarias (4 max)"
+                                    enableCustomFields={true}
+                                    autoscroll={true}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm="auto">
+                                <div className="exp-label">
+                                    Nivel de experiencia
+                                </div>
+                                <ToggleButtonGroup
+                                    size="small"
+                                    value={formData.exp}
+                                    exclusive
+                                    onChange={onExpChange}
+                                    aria-label="text alignment"
+                                >
+                                    <ToggleButton value={1}>
+                                        Aficionado
+                                    </ToggleButton>
+                                    <ToggleButton value={2}>
+                                        Experimentado
+                                    </ToggleButton>
+                                    <ToggleButton value={3}>
+                                        Experto
+                                    </ToggleButton>
+                                </ToggleButtonGroup>
+                            </Grid>
+                            <Grid item xs={12} >
+                                <TextField
+                                    fullWidth
+                                    label="Descripción"
+                                    multiline
+                                    rows={4}
+                                    value={formData.desc}
+                                    onChange={e => setFormData({ ...formData, 'desc': e.target.value})}
+                                    placeholder="Describe tu experiencia culinaria"
+                                />
+                            </Grid>
+                            <Grid item xs={12} >
+                                <TextField
+                                    fullWidth
+                                    label="Portfolio"
+                                    value={formData.portfolio}
+                                    onChange={e => setFormData({ ...formData, 'portfolio': e.target.value})}
+                                    placeholder="Ingresa un link donde se muestre tu trabajo (página web, red social, etc)"
+                                />
+                            </Grid>
+                        </Grid>
+                    </div>
                 </div>
             </div>
             <div className="rs-footer">
