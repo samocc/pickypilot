@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import './RegisterScreen.scss'
 import '@aws-amplify/ui-react/styles.css';
 import {API} from "aws-amplify";
@@ -9,7 +9,7 @@ import {TextField} from "@mui/material";
 import CategoryPicker from "../../components/category-picker/CategoryPicker";
 import AddTaskIcon from "@mui/icons-material/AddTask";
 import LoadingButton from "@mui/lab/LoadingButton";
-import RegErrors from "./RegErrors";
+import ErrorsList from "../../components/errors-list/ErrorsList";
 
 const initialFormState = {
     email: '',
@@ -29,6 +29,7 @@ function UserRegister(props) {
     const [errorState, setErrorState] = useState(initialErrorState);
     const [isLoading, setIsLoading] = useState(false);
     const [regErrors, setRegErrors] = useState([]);
+    const topRef = useRef(null);
 
     async function registerUser() {
         setRegErrors([]);
@@ -46,6 +47,7 @@ function UserRegister(props) {
     function registerError({errors}) {
         setIsLoading(false);
         setRegErrors(errors);
+        topRef.current.scrollIntoView(true);
     }
 
     function validateForm(data) {
@@ -83,10 +85,10 @@ function UserRegister(props) {
 
     return (
         <div className="register-screen">
-            <div className="rs-header">Registrar como usuario</div>
+            <div className="rs-header" ref={topRef}>Registrar como usuario</div>
             <div className="rs-body">
                 <div className="rs-form">
-                    <RegErrors errors={regErrors} removeError={removeError}/>
+                    <ErrorsList errors={regErrors} removeError={removeError}/>
                     <div className="rs-section">
                         <p>
                             Bla bla blaaa blabla bla blaaa bla ldijeaiof aifhaei oaeihfdae oiaeufhaeu ofihaef

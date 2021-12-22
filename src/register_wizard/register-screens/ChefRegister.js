@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import './RegisterScreen.scss'
 import '@aws-amplify/ui-react/styles.css';
 import {API} from "aws-amplify";
@@ -12,7 +12,7 @@ import AddTaskIcon from '@mui/icons-material/AddTask';
 import Grid from '@mui/material/Grid';
 import EspSelector from "../../components/esp-selector/EspSelector";
 import RegionSelector from "../../components/region-selector/RegionSelector";
-import RegErrors from "./RegErrors";
+import ErrorsList from "../../components/errors-list/ErrorsList";
 
 const initialFormState = {
     email: '',
@@ -36,6 +36,7 @@ function ChefRegister(props) {
     const [errorState, setErrorState] = useState(initialErrorState);
     const [isLoading, setIsLoading] = useState(false);
     const [regErrors, setRegErrors] = useState([]);
+    const topRef = useRef(null);
 
     async function registerUser() {
         setRegErrors([]);
@@ -53,6 +54,7 @@ function ChefRegister(props) {
     function registerError({errors}) {
         setIsLoading(false);
         setRegErrors(errors);
+        topRef.current.scrollIntoView(true);
     }
 
     function validateForm(data) {
@@ -95,10 +97,10 @@ function ChefRegister(props) {
 
     return (
         <div className="register-screen">
-            <div className="rs-header">Registrar como proveedor</div>
+            <div className="rs-header" ref={topRef}>Registrar como proveedor</div>
             <div className="rs-body">
                 <div className="rs-form">
-                    <RegErrors errors={regErrors} removeError={removeError}/>
+                    <ErrorsList errors={regErrors} removeError={removeError}/>
                     <div className="rs-section">
                         <Grid container rowSpacing={3} columnSpacing={2}>
                             <Grid item xs={12} sm={6}>

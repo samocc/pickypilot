@@ -1,12 +1,11 @@
-import React from "react";
 import {IconButton} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import Alert from "@mui/material/Alert";
 
-function RegErrors({errors, removeError}) {
+function ErrorsList({errors, removeError}) {
 
     return (
-        <div>
+        <div className="picky-errors-list">
             {errors.map(({message}, index) => (
                 <Alert
                     key={'error-display-' + index}
@@ -31,4 +30,4 @@ function RegErrors({errors, removeError}) {
     )
 }
 
-export default RegErrors;
+export default ErrorsList;
