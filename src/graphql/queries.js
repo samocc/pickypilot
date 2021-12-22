@@ -7,6 +7,8 @@ export const getRegistry = /* GraphQL */ `
       id
       email
       region
+      birth
+      gender
       exp
       esp
       desc
@@ -27,6 +29,8 @@ export const listRegistries = /* GraphQL */ `
         id
         email
         region
+        birth
+        gender
         exp
         esp
         desc
@@ -44,6 +48,8 @@ export const getUserRegistry = /* GraphQL */ `
       id
       email
       region
+      birth
+      gender
       categories
       createdAt
       updatedAt
@@ -61,6 +67,8 @@ export const listUserRegistries = /* GraphQL */ `
         id
         email
         region
+        birth
+        gender
         categories
         createdAt
         updatedAt

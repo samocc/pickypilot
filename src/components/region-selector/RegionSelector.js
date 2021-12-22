@@ -1,26 +1,12 @@
 import React, {useRef} from "react";
 import './RegionSelector.scss'
-import {regions} from "../../services/DataConfig";
-import InputLabel from '@mui/material/InputLabel';
+import {MenuProps, regions} from "../../services/DataConfig";
 import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
-import Select from '@mui/material/Select';
-import FormHelperText from "@mui/material/FormHelperText";
-
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-    PaperProps: {
-        style: {
-            maxHeight: ITEM_HEIGHT * 7.5 + ITEM_PADDING_TOP,
-            width: 250,
-        },
-    },
-};
+import {TextField} from "@mui/material";
 
 function RegionSelector (props) {
-    const {value, onRegionChange, error, required, autoscroll = false, label = "Selecciona región"} = props;
+    const {value, onRegionChange, error, required, autoscroll = false, label = "Selecciona región", variant = 'standard'} = props;
     const elemRef = useRef(null);
 
     function onOpen(){
@@ -30,26 +16,25 @@ function RegionSelector (props) {
     }
 
     return (
-        <FormControl className="picky-region-selector" variant="standard" fullWidth error={error.length > 0} sx={{ }} required={required}>
-            <InputLabel id="region-select-label">{label}</InputLabel>
-            <Select
-                labelId="region-select-label"
-                id="region-select"
-                value={value}
-                onChange={onRegionChange}
-                required={required}
-                MenuProps={MenuProps}
-                ref={elemRef}
-                onOpen={onOpen}
-            >
-                {regions.map(({code, name}) => (
-                    <MenuItem key={code} value={name}>
-                        <ListItemText primary={name} />
-                    </MenuItem>
-                ))}
-            </Select>
-            <FormHelperText>{error}</FormHelperText>
-        </FormControl>
+        <TextField
+            className="picky-region-selector"
+            fullWidth
+            select
+            variant={variant}
+            onChange={onRegionChange}
+            label={label}
+            value={value}
+            error={error.length > 0}
+            helperText={error}
+            required={required}
+            SelectProps={{MenuProps: MenuProps, onOpen: onOpen}}
+        >
+            {regions.map(({code, name}) => (
+                <MenuItem key={code} value={name}>
+                    <ListItemText primary={name} />
+                </MenuItem>
+            ))}
+        </TextField>
     )
 }
 

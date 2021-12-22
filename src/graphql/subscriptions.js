@@ -7,6 +7,8 @@ export const onCreateRegistry = /* GraphQL */ `
       id
       email
       region
+      birth
+      gender
       exp
       esp
       desc
@@ -22,6 +24,8 @@ export const onUpdateRegistry = /* GraphQL */ `
       id
       email
       region
+      birth
+      gender
       exp
       esp
       desc
@@ -37,6 +41,8 @@ export const onDeleteRegistry = /* GraphQL */ `
       id
       email
       region
+      birth
+      gender
       exp
       esp
       desc
@@ -52,6 +58,8 @@ export const onCreateUserRegistry = /* GraphQL */ `
       id
       email
       region
+      birth
+      gender
       categories
       createdAt
       updatedAt
@@ -64,6 +72,8 @@ export const onUpdateUserRegistry = /* GraphQL */ `
       id
       email
       region
+      birth
+      gender
       categories
       createdAt
       updatedAt
@@ -76,6 +86,8 @@ export const onDeleteUserRegistry = /* GraphQL */ `
       id
       email
       region
+      birth
+      gender
       categories
       createdAt
       updatedAt

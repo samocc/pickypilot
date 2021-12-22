@@ -6,6 +6,8 @@ type Registry @model {
   id: ID!
   email: AWSEmail!
   region: String
+  birth: Int
+  gender: String
   exp: Int
   esp: [String]
   desc: String
@@ -16,5 +18,7 @@ type UserRegistry @model {
   id: ID!
   email: AWSEmail!
   region: String
+  birth: Int
+  gender: String
   categories: [String]
 }

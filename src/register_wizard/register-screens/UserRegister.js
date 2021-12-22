@@ -10,16 +10,23 @@ import CategoryPicker from "../../components/category-picker/CategoryPicker";
 import AddTaskIcon from "@mui/icons-material/AddTask";
 import LoadingButton from "@mui/lab/LoadingButton";
 import ErrorsList from "../../components/errors-list/ErrorsList";
+import toInt from "validator/es/lib/toInt";
+import MenuItem from "@mui/material/MenuItem";
+import {BirthYears, Genders, MenuProps} from "../../services/DataConfig";
 
 const initialFormState = {
     email: '',
     region: '',
+    birth: 2010,
+    gender: '',
     categories: []
 }
 
 const initialErrorState = {
     email: '',
     region: '',
+    birth: '',
+    gender: '',
     categories: ''
 }
 
@@ -102,7 +109,7 @@ function UserRegister(props) {
                     </div>
                     <div className="rs-section">
                         <Grid container rowSpacing={3} columnSpacing={2}>
-                            <Grid item xs={12} sm={6}>
+                            <Grid item xs={12} sm={8}>
                                 <TextField
                                     fullWidth
                                     variant="standard"
@@ -114,21 +121,59 @@ function UserRegister(props) {
                                     helperText={errorState.email}
                                 />
                             </Grid>
-                            <Grid item xs={12} sm={6}>
+                            <Grid item xs={12} sm={4}>
+                                <TextField
+                                    fullWidth
+                                    select
+                                    variant="standard"
+                                    onChange={(e) => setFormData({...formData, birth: toInt(e.target.value)})}
+                                    label="Año de nacimiento"
+                                    value={formData.birth}
+                                    error={errorState.email.length > 0}
+                                    helperText={errorState.email}
+                                    SelectProps={{MenuProps: MenuProps}}
+                                >
+                                    {BirthYears.map((option) => (
+                                        <MenuItem key={option} value={option}>
+                                            {option}
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
+                            </Grid>
+                            <Grid item xs={12} sm={8}>
                                 <RegionSelector
                                     onRegionChange={onRegionChange}
                                     error={errorState.region}
                                     required={true}
+                                    variant="standard"
                                     value={formData.region}
                                     label="Estado de residencia"
                                 />
                             </Grid>
-                            <Grid item xs={12}>
-                                <div className="form-instruction">Selecciona las experiencias Picky que despiertan tu interés:</div>
-                                <CategoryPicker value={formData.categories} onChange={(nv) => setFormData({ ...formData, 'categories': nv})}/>
+                            <Grid item xs={12} sm={4}>
+                                <TextField
+                                    fullWidth
+                                    select
+                                    onChange={(e) => setFormData({...formData, gender: e.target.value})}
+                                    label="Género"
+                                    variant="standard"
+                                    value={formData.gender}
+                                    error={errorState.email.length > 0}
+                                    helperText={errorState.email}
+                                >
+                                    {Genders.map((option) => (
+                                        <MenuItem key={option} value={option}>
+                                            {option}
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
                             </Grid>
                         </Grid>
-                    </div>
+                        <div className="rs-section extra-margin">
+                            <div className="form-instruction">Selecciona las experiencias Picky que despiertan tu interés:</div>
+                            <CategoryPicker value={formData.categories} onChange={(nv) => setFormData({ ...formData, 'categories': nv})}/>
+                        </div>
+                      </div>
                 </div>
             </div>
             <div className="rs-footer">

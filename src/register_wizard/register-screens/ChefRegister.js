@@ -15,10 +15,13 @@ import RegionSelector from "../../components/region-selector/RegionSelector";
 import ErrorsList from "../../components/errors-list/ErrorsList";
 import toInt from "validator/es/lib/toInt";
 import MenuItem from "@mui/material/MenuItem";
+import {BirthYears, Genders, MenuProps} from "../../services/DataConfig";
 
 const initialFormState = {
     email: '',
     region: '',
+    birth: 2010,
+    gender: '',
     esp: [],
     desc: '',
     portfolio: ''
@@ -27,13 +30,12 @@ const initialFormState = {
 const initialErrorState = {
     email: '',
     region: '',
-    esp: [],
+    birth: '',
+    gender: '',
+    esp: '',
     desc: '',
     portfolio: ''
 }
-
-const Genders = ['Masculino', 'Femenino', 'Otro'];
-const BirthYears = ['2010', '2009', '2008', '2007', '2006', '2005', '2004'];
 
 function ChefRegister(props) {
     const {onSuccess, onError} = props;
@@ -41,10 +43,6 @@ function ChefRegister(props) {
     const [errorState, setErrorState] = useState(initialErrorState);
     const [isLoading, setIsLoading] = useState(false);
     const [regErrors, setRegErrors] = useState([]);
-    const [testFields, setTestFields] = useState({
-        gender: "",
-        born: 2010
-    })
 
     async function registerUser() {
         setRegErrors([]);
@@ -128,11 +126,12 @@ function ChefRegister(props) {
                                     fullWidth
                                     select
                                     variant="standard"
-                                    onChange={(e) => setTestFields({...testFields, born: toInt(e.target.value)})}
+                                    onChange={(e) => setFormData({...formData, birth: toInt(e.target.value)})}
                                     label="Año de nacimiento"
-                                    value={testFields.born}
+                                    value={formData.birth}
                                     error={errorState.email.length > 0}
                                     helperText={errorState.email}
+                                    SelectProps={{MenuProps: MenuProps}}
                                 >
                                     {BirthYears.map((option) => (
                                         <MenuItem key={option} value={option}>
@@ -146,6 +145,7 @@ function ChefRegister(props) {
                                     onRegionChange={onRegionChange}
                                     error={errorState.region}
                                     required={true}
+                                    variant="standard"
                                     value={formData.region}
                                     label="Estado de residencia"
                                 />
@@ -154,10 +154,10 @@ function ChefRegister(props) {
                                 <TextField
                                     fullWidth
                                     select
-                                    onChange={(e) => setTestFields({...testFields, gender: e.target.value})}
+                                    onChange={(e) => setFormData({...formData, gender: e.target.value})}
                                     label="Género"
                                     variant="standard"
-                                    value={testFields.gender}
+                                    value={formData.gender}
                                     error={errorState.email.length > 0}
                                     helperText={errorState.email}
                                 >
@@ -168,33 +168,15 @@ function ChefRegister(props) {
                                     ))}
                                 </TextField>
                             </Grid>
-                            {/*<Grid item xs={12} sm={4}>
-                                <TextField
-                                    fullWidth
-                                    select
-                                    variant="standard"
-                                    onChange={(e) => setTestFields({...testFields, born: toInt(e.target.value)})}
-                                    label="Año de nacimiento"
-                                    value={testFields.born}
-                                    error={errorState.email.length > 0}
-                                    helperText={errorState.email}
-                                >
-                                    {BirthYears.map((option) => (
-                                        <MenuItem key={option} value={option}>
-                                            {option}
-                                        </MenuItem>
-                                    ))}
-                                </TextField>
-                            </Grid>*/}
-
                             {/*<Grid item xs={12} sm={4}>*/}
                             {/*    <div className="exp-label">*/}
-                            {/*        Género (opcional)*/}
+                            {/*        Género*/}
                             {/*    </div>*/}
                             {/*    <ToggleButtonGroup*/}
                             {/*        size="small"*/}
-                            {/*        value={testFields.gender}*/}
                             {/*        exclusive*/}
+                            {/*        fullWidth*/}
+                            {/*        value={testFields.gender}*/}
                             {/*        onChange={(e, nv) => setTestFields({...testFields, gender: nv}) }*/}
                             {/*        aria-label="text alignment"*/}
                             {/*    >*/}
@@ -209,65 +191,92 @@ function ChefRegister(props) {
                             {/*        </ToggleButton>*/}
                             {/*    </ToggleButtonGroup>*/}
                             {/*</Grid>*/}
+                            {/*<Grid item xs={12} sm={4}>*/}
+                            {/*    <div className="exp-label">*/}
+                            {/*        Género*/}
+                            {/*    </div>*/}
+                            {/*    <ToggleButtonGroup*/}
+                            {/*        size="small"*/}
+                            {/*        value={testFields.gender}*/}
+                            {/*        exclusive*/}
+                            {/*        fullWidth*/}
+                            {/*        onChange={(e, nv) => setTestFields({...testFields, gender: nv}) }*/}
+                            {/*        aria-label="text alignment"*/}
+                            {/*    >*/}
+                            {/*        <ToggleButton value="Masculino">*/}
+                            {/*            <MaleIcon />*/}
+                            {/*        </ToggleButton>*/}
+                            {/*        <ToggleButton value="Femenino">*/}
+                            {/*            <FemaleIcon />*/}
+                            {/*        </ToggleButton>*/}
+                            {/*        <ToggleButton value="Otro">*/}
+                            {/*            <TransgenderIcon />*/}
+                            {/*        </ToggleButton>*/}
+                            {/*    </ToggleButtonGroup>*/}
+                            {/*</Grid>*/}
 
                         </Grid>
                     </div>
 
                     <div className="rs-section extra-margin">
-                        <Grid container rowSpacing={3} columnSpacing={2}>
-                            <Grid item xs={12} sm>
-                                <EspSelector
-                                    value={formData.esp}
-                                    onChange={(nv) => setFormData({ ...formData, 'esp': nv})}
-                                    max={4}
-                                    label="Especialidades culinarias (4 max)"
-                                    enableCustomFields={true}
-                                    autoscroll={true}
-                                />
+                        <div className="form-instruction">Queremos saber más de ti:</div>
+                        <div style={{margin: '20px 0 0'}}>
+                            <Grid container rowSpacing={2} columnSpacing={2}>
+                                <Grid item xs={12} sm>
+                                    <EspSelector
+                                        value={formData.esp}
+                                        onChange={(nv) => setFormData({ ...formData, 'esp': nv})}
+                                        max={4}
+                                        label="Especialidades culinarias (4 max)"
+                                        enableCustomFields={true}
+                                        autoscroll={true}
+                                    />
+                                </Grid>
+                                <Grid item xs={12} sm={"auto"}>
+                                    <div className="exp-label">
+                                        Nivel de experiencia
+                                    </div>
+                                    <ToggleButtonGroup
+                                        size="small"
+                                        value={formData.exp}
+                                        exclusive
+                                        onChange={onExpChange}
+                                        aria-label="text alignment"
+                                    >
+                                        <ToggleButton value={1}>
+                                            Aficionado
+                                        </ToggleButton>
+                                        <ToggleButton value={2}>
+                                            Experimentado
+                                        </ToggleButton>
+                                        <ToggleButton value={3}>
+                                            Experto
+                                        </ToggleButton>
+                                    </ToggleButtonGroup>
+                                </Grid>
+                                <Grid item xs={12} >
+                                    <TextField
+                                        fullWidth
+                                        label="Descripción"
+                                        multiline
+                                        rows={4}
+                                        value={formData.desc}
+                                        onChange={e => setFormData({ ...formData, 'desc': e.target.value})}
+                                        placeholder="Describe tu experiencia culinaria"
+                                    />
+                                </Grid>
+                                <Grid item xs={12} >
+                                    <TextField
+                                        fullWidth
+                                        label="Portfolio"
+                                        value={formData.portfolio}
+                                        onChange={e => setFormData({ ...formData, 'portfolio': e.target.value})}
+                                        placeholder="Ingresa un link donde se muestre tu trabajo (página web, red social, etc)"
+                                    />
+                                </Grid>
                             </Grid>
-                            <Grid item xs={12} sm="auto">
-                                <div className="exp-label">
-                                    Nivel de experiencia
-                                </div>
-                                <ToggleButtonGroup
-                                    size="small"
-                                    value={formData.exp}
-                                    exclusive
-                                    onChange={onExpChange}
-                                    aria-label="text alignment"
-                                >
-                                    <ToggleButton value={1}>
-                                        Aficionado
-                                    </ToggleButton>
-                                    <ToggleButton value={2}>
-                                        Experimentado
-                                    </ToggleButton>
-                                    <ToggleButton value={3}>
-                                        Experto
-                                    </ToggleButton>
-                                </ToggleButtonGroup>
-                            </Grid>
-                            <Grid item xs={12} >
-                                <TextField
-                                    fullWidth
-                                    label="Descripción"
-                                    multiline
-                                    rows={4}
-                                    value={formData.desc}
-                                    onChange={e => setFormData({ ...formData, 'desc': e.target.value})}
-                                    placeholder="Describe tu experiencia culinaria"
-                                />
-                            </Grid>
-                            <Grid item xs={12} >
-                                <TextField
-                                    fullWidth
-                                    label="Portfolio"
-                                    value={formData.portfolio}
-                                    onChange={e => setFormData({ ...formData, 'portfolio': e.target.value})}
-                                    placeholder="Ingresa un link donde se muestre tu trabajo (página web, red social, etc)"
-                                />
-                            </Grid>
-                        </Grid>
+                        </div>
+
                     </div>
                 </div>
             </div>

@@ -7,6 +7,30 @@ export const PickyCategories = [
     { name: 'Virtual experience' }
 ]
 
+export const Genders = ['Masculino', 'Femenino', 'Otro'];
+export const BirthYears = buildBirthYearsArray(1930, 2010);
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+export const MenuProps = {
+    PaperProps: {
+        style: {
+            maxHeight: ITEM_HEIGHT * 7.5 + ITEM_PADDING_TOP,
+            width: 250,
+        },
+    },
+};
+
+function buildBirthYearsArray(start, finish) {
+    const result = [];
+
+    for(let i = finish; i >= start; i--) {
+        result.push(i.toString());
+    }
+
+    return result;
+}
+
 export const FoodSpecialities = [
     'Fusión',
     'Vegetariana',

@@ -6,21 +6,10 @@ import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
-import {FoodSpecialities} from "../../services/DataConfig";
+import {FoodSpecialities, MenuProps} from "../../services/DataConfig";
 import {Box, Chip, Dialog, DialogActions, DialogContent, DialogTitle, TextField} from "@mui/material";
 import {useRef, useState} from "react";
 import Button from "@mui/material/Button";
-
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-    PaperProps: {
-        style: {
-            maxHeight: ITEM_HEIGHT * 7.5 + ITEM_PADDING_TOP,
-            width: 250,
-        },
-    },
-};
 
 function EspSelector(props) {
     const { value : model, onChange, max = null, label, enableCustomFields = false, chip = false, autoscroll = false} = props;
