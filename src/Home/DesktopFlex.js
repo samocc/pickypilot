@@ -9,8 +9,6 @@ import page4 from '../Home04.png'
 import page5 from '../Home05.png'
 import page6 from '../Home06.png'
 import page7 from '../Home07.png'
-import Button from "@mui/material/Button";
-import {NotificationService} from "../services/global-notifications/GlobalNotifications.service";
 console.log(page1, page2, page3, page4, page5, page6, page7);
 
 function DesktopFlex() {
@@ -23,13 +21,6 @@ function DesktopFlex() {
         setRegisterModalOpen(false);
     }
 
-    function successNotification () {
-        NotificationService.success('Global notification message', {});
-    }
-    function errorNotification () {
-        NotificationService.error('Global notification message', {});
-    }
-
     return(
         <div className="picky-desktop-flex">
             <RegisterModal open={registerModalOpen} onClose={closeRegisterModal}/>
@@ -40,8 +31,6 @@ function DesktopFlex() {
                 {/*<span className="font-test ft-Poppins"> Picky </span>*/}
                 {/*<span className="font-test ft-PublicSans"> Picky </span>*/}
                 {/*<span className="font-test ft-Roboto"> Picky </span>*/}
-                <Button onClick={successNotification}>Success</Button>
-                <Button onClick={errorNotification}>Error</Button>
             </div>
             <div className="tile tile-white">
                 <div className="tile-content page1">
