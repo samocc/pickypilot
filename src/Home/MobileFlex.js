@@ -5,7 +5,7 @@ import {useState} from "react";
 import page1 from '../Mobile01.png'
 import page2 from '../Mobile02.png'
 import page3 from '../Mobile03.png'
-console.log(page1, page2, page3);
+console.debug(page1, page2, page3);
 
 function MobileFlex() {
     const [registerModalOpen, setRegisterModalOpen] = useState(false);

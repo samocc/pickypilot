@@ -9,7 +9,7 @@ import page4 from '../Home04.png'
 import page5 from '../Home05.png'
 import page6 from '../Home06.png'
 import page7 from '../Home07.png'
-console.log(page1, page2, page3, page4, page5, page6, page7);
+console.debug(page1, page2, page3, page4, page5, page6, page7);
 
 function DesktopFlex() {
     const [registerModalOpen, setRegisterModalOpen] = useState(false);
