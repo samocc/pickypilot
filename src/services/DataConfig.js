@@ -123,8 +123,7 @@ export const UserSuccessChoro = 'Choro choro oadijaiedaoijifa oiafjae oifjeai fo
     '                    djaeifja oaijdfiae foaeijfea oaijfiae ofijaeif foaiejfea foeiajf\n' +
     '                    Choro choro oadijaiedaoijifa oiafjae oifjeai foaeij\n' +
     '                    djaeifja oaijdfiae foaeijfea oaijfiae ofijaeif foaiejfea foeiajf\n' +
-    '                    Choro choro oadijaiedaoijifa oiafjae oifjeai foaeij\n' +
-    '                    djaeifja oaijdfiae foaeijfea oaijfiae ofijaeif foaiejfea foeiajf'
+    '                    Choro choro oadijaiedaoijifa oiafjae oifjeai foaeij\n'
 
 export const ChefSuccessChoro = 'Chef choro oadijaiedaoijifa oiafjae oifjeai foaeij\n' +
     '                    djaeifja oaijdfiae foaeijfea oaijfiae ofijaeif foaiejfea foeiajf\n' +
